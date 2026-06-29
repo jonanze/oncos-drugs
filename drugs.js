@@ -482,6 +482,94 @@ window.DRUGS = [
   },
   sources: "HSA SG package insert (Abraxane, SIN14532P) · FDA label (DailyMed) · MOH Cancer Drug List (1 Jun 2026, MAF — indication-specific)",
   verified: "2026-06-30"
+},
+
+{
+  id: "doxorubicin",
+  name: "Doxorubicin",
+  aliases: ["Adriamycin", "Adrim", "hydroxydaunorubicin"],
+  class: "Anthracycline",
+  subclass: "Topoisomerase II inhibitor",
+  route: ["IV"],
+  atc: "L01DB01",
+  brands: ["Adriamycin", "Adrim"],
+  tumours: ["Breast", "Sarcoma", "Lymphoma", "Ovarian", "Bladder", "Gastric", "Lung — SCLC", "Thyroid"],
+  mechanism: "Anthracycline — intercalates DNA and inhibits topoisomerase II; free-radical generation drives cumulative cardiotoxicity.",
+  boxedWarning: "Cardiomyopathy / CHF — cumulative, dose-related (risk rises above 550 mg/m²; can occur during or years after); monitor LVEF. Secondary AML/MDS. Extravasation — severe tissue necrosis (vesicant); give via free-flowing IV. Severe myelosuppression. Reduce dose in hepatic impairment.",
+  indications: [
+    { indication: "Breast",                       hsa: "y", fda: "y", dose: "60 mg/m² (AC); 60–75 mg/m² q3w" },
+    { indication: "Sarcoma (soft tissue & bone)", hsa: "y", fda: "y", dose: "60–75 mg/m² q3w (± ifosfamide)" },
+    { indication: "Hodgkin lymphoma",             hsa: "y", fda: "y", dose: "25 mg/m² D1,15 (ABVD)" },
+    { indication: "Non-Hodgkin lymphoma",         hsa: "y", fda: "y", dose: "50 mg/m² q3w (CHOP)" },
+    { indication: "Ovarian",                      hsa: "y", fda: "y", dose: "60–75 mg/m² q3w" },
+    { indication: "Bladder (transitional cell)",  hsa: "y", fda: "y", dose: "60 mg/m² q3w (MVAC)" },
+    { indication: "Gastric",                      hsa: "y", fda: "y", dose: "Regimen-dependent" },
+    { indication: "Lung — small cell",            hsa: "y", fda: "y", dose: "Regimen-dependent" },
+    { indication: "Thyroid",                      hsa: "y", fda: "y", dose: "60 mg/m² q3w" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: [
+      "Myelosuppression — neutropenia",
+      "Alopecia",
+      "Nausea / vomiting",
+      "Mucositis / stomatitis",
+      "Red discolouration of urine",
+      "Radiation recall"
+    ],
+    serious: ["Cardiomyopathy / CHF (cumulative)", "Acute arrhythmia", "Extravasation necrosis (vesicant)", "Secondary AML/MDS"]
+  },
+  doseReductions: {
+    hepatic: "Bilirubin 1.2–3 mg/dL → 50%; 3.1–5 → 75%; >5 → contraindicated.",
+    other: [
+      { label: "Cumulative dose cap", text: "lifetime max ~450–550 mg/m² (lower with prior chest RT, cardiac risk, or concurrent trastuzumab). Monitor LVEF before / during / after." },
+      { label: "Cardiac", text: "hold or discontinue for significant LVEF fall or clinical CHF." },
+      { label: "Myelosuppression", text: "reduce / delay for grade ≥3 neutropenia or febrile neutropenia." }
+    ]
+  },
+  sources: "HSA SG package insert (Adrim, SIN16081P) · FDA label (Adriamycin, DailyMed) · MOH Cancer Drug List (1 Jun 2026, SDL)",
+  verified: "2026-06-30"
+},
+
+{
+  id: "epirubicin",
+  name: "Epirubicin",
+  aliases: ["Ellence", "Pharmorubicin"],
+  class: "Anthracycline",
+  subclass: "Topoisomerase II inhibitor",
+  route: ["IV"],
+  atc: "L01DB03",
+  brands: ["Ellence", "Pharmorubicin"],
+  tumours: ["Breast", "Gastric", "Ovarian", "Lymphoma"],
+  mechanism: "Anthracycline (doxorubicin epimer) — intercalates DNA, inhibits topoisomerase II; less cardiotoxic per mg than doxorubicin (higher cumulative cap).",
+  boxedWarning: "Cardiotoxicity / CHF — cumulative, dose-related (risk rises sharply above 900 mg/m²; during or years after). Secondary AML/MDS. Extravasation — severe tissue necrosis (vesicant). Severe myelosuppression. Reduce dose in hepatic impairment.",
+  indications: [
+    { indication: "Breast",   hsa: "y", fda: "y", dose: "90–100 mg/m² q3w (FEC/EC); adjuvant node-positive" },
+    { indication: "Gastric",  hsa: "y", fda: "n", dose: "50 mg/m² q3w (ECF/EOX)" },
+    { indication: "Ovarian",  hsa: "y", fda: "n", dose: "Regimen-dependent" },
+    { indication: "Lymphoma", hsa: "y", fda: "n", dose: "Regimen-dependent" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: [
+      "Myelosuppression — neutropenia",
+      "Alopecia",
+      "Nausea / vomiting",
+      "Mucositis / stomatitis",
+      "Red discolouration of urine"
+    ],
+    serious: ["Cardiomyopathy / CHF (cumulative)", "Extravasation necrosis (vesicant)", "Secondary AML/MDS"]
+  },
+  doseReductions: {
+    hepatic: "Bilirubin 1.2–3 mg/dL (or AST 2–4× ULN) → 50%; bilirubin >3 (or AST >4× ULN) → 75%.",
+    other: [
+      { label: "Cumulative dose cap", text: "lifetime max ~900 mg/m² (exceed only with extreme caution; lower with prior chest RT / cardiac risk). Monitor LVEF." },
+      { label: "Cardiac", text: "hold or discontinue for significant LVEF fall or CHF." },
+      { label: "Toxicity at nadir", text: "reduce day-1 dose for grade ≥3 haematologic or non-haematologic toxicity." }
+    ]
+  },
+  sources: "HSA SG package insert (Pharmorubicin) · FDA label (Ellence, DailyMed) · MOH Cancer Drug List (1 Jun 2026, SDL). NB: only adjuvant breast is FDA-approved; gastric/ovarian/lymphoma are SG/EU — exact SG PI list to confirm.",
+  verified: "2026-06-30"
 }
 
 ];
