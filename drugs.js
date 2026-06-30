@@ -933,6 +933,52 @@ window.DRUGS = [
   },
   sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Opdivo) · FDA label (DailyMed). All indications HSA-registered; CheckMate trials cited as the registration basis. irAE management per CTCAE / ASCO-ESMO guidance",
   verified: "2026-06-30"
+},
+
+{
+  id: "atezolizumab",
+  name: "Atezolizumab",
+  aliases: ["Tecentriq"],
+  class: "Checkpoint inhibitor",
+  subclass: "Anti–PD-L1",
+  route: ["IV"],
+  atc: "L01FF05",
+  brands: ["Tecentriq"],
+  tumours: ["Lung — NSCLC", "Lung — SCLC", "Hepatocellular", "Bladder", "Breast"],
+  mechanism: "Anti–PD-L1 monoclonal antibody — blocks PD-L1 binding to PD-1 and B7.1, restoring T-cell antitumour activity.",
+  dosing: "1200 mg q3w (or 840 mg q2w / 1680 mg q4w), flat.",
+  cdl: { items: [
+    { cancer: "NSCLC — 1L mono (PD-L1 TPS ≥50%)", status: "MAF", text: "metastatic, no EGFR/ALK (IMpower110)" },
+    { cancer: "NSCLC non-squamous — 1L", status: "MAF", text: "+ platinum-doublet, metastatic, no EGFR/ALK (IMpower130)" },
+    { cancer: "NSCLC non-squamous — 1L (+ bevacizumab)", status: "MAF", text: "+ subsidised bev biosimilar + platinum-doublet; non-subsidised bev brand → MSV/MSHL (IMpower150)" },
+    { cancer: "NSCLC — 2L", status: "MAF", text: "metastatic, post-platinum, no prior PD-1/PD-L1 (OAK)" },
+    { cancer: "NSCLC — adjuvant", status: "MAF", text: "resected stage II–IIIA, PD-L1 ≥50%, post-adjuvant chemo, max 12 mo (IMpower010)" },
+    { cancer: "SCLC — extensive-stage 1L", status: "MAF", text: "+ platinum + etoposide, untreated (IMpower133)" },
+    { cancer: "Hepatocellular — 1L (+ bevacizumab)", status: "MAF", text: "unresectable, Child-Pugh adequate; subsidised bev biosimilar; non-subsidised bev brand → MSV/MSHL (IMbrave150)" },
+    { cancer: "Urothelial — 2L", status: "MSV/MSHL", text: "locally advanced/metastatic, post-platinum" },
+    { cancer: "Urothelial — 1L (cisplatin-ineligible)", status: "MSV/MSHL", text: "locally advanced/metastatic" },
+    { cancer: "Urothelial — 1L (PD-L1)", status: "MSV/MSHL", text: "locally advanced/metastatic, platinum-ineligible" },
+    { cancer: "TNBC — 1L (PD-L1+)", status: "MSV/MSHL", text: "+ nab-paclitaxel, unresectable LA/metastatic (IMpassion130)" }
+  ] },
+  toxicities: {
+    common: [
+      "Immune-related: pneumonitis, colitis / diarrhoea, hepatitis",
+      "Endocrinopathies — thyroid, adrenal insufficiency, hypophysitis, T1DM",
+      "Dermatitis / rash, pruritus",
+      "Nephritis · fatigue, infusion reactions"
+    ],
+    serious: ["Severe/fatal pneumonitis, colitis, hepatitis", "Myocarditis", "Adrenal crisis / DKA", "SJS/TEN", "Rare neuro/haematologic irAEs"]
+  },
+  doseModLabel: "irAE management",
+  doseReductions: {
+    other: [
+      { label: "Withhold (grade 2)", text: "moderate irAEs — withhold + corticosteroids (prednisolone 1–2 mg/kg/day, taper over ≥1 month); resume when ≤grade 1 and steroid ≤10 mg/day." },
+      { label: "Discontinue", text: "permanently for most grade ≥3/4 irAEs, recurrent grade ≥2, or any grade ≥3 myocarditis / neurologic / haematologic event." },
+      { label: "Endocrinopathies", text: "may continue with hormone replacement (thyroid, adrenal, T1DM)." }
+    ]
+  },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Tecentriq) · FDA label (DailyMed). All indications HSA-registered; IMpower/IMbrave/OAK trials cited as the registration basis. irAE management per CTCAE / ASCO-ESMO guidance",
+  verified: "2026-06-30"
 }
 
 ];
