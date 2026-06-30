@@ -1806,6 +1806,238 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Braftovi) · FDA label (DailyMed). BEACON CRC; COLUMBUS (melanoma)",
   verified: "2026-06-30"
+},
+
+{
+  id: "cabozantinib",
+  name: "Cabozantinib",
+  aliases: ["Cabometyx", "Cometriq"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/MET/AXL/RET",
+  route: ["PO"],
+  atc: "L01EX07",
+  brands: ["Cabometyx"],
+  tumours: ["Renal", "Hepatocellular"],
+  mechanism: "Multikinase VEGFR2 / MET / AXL / RET inhibitor.",
+  dosing: "60 mg PO once daily (40 mg with nivolumab); reduce 60 → 40 → 20 mg.",
+  cdl: { items: [
+    { cancer: "Renal cell — 1L (intermediate/poor-risk)", status: "MAF", text: "untreated advanced RCC (CABOSUN; or + nivolumab, CheckMate-9ER)" },
+    { cancer: "Renal cell — 2L", status: "MAF", text: "previously treated advanced RCC (METEOR)" },
+    { cancer: "Hepatocellular — 2L", status: "MAF", text: "advanced unresectable, after ≥1 prior line, Child-Pugh adequate (CELESTIAL)" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Hand-foot skin reaction", "Hypertension", "Fatigue, decreased appetite", "Mucositis", "Hypothyroidism"],
+    serious: ["Haemorrhage", "GI perforation / fistula", "RPLS", "Wound-healing complications (hold before surgery)"]
+  },
+  doseReductions: { other: [
+    { label: "Hypertension / HFSR / diarrhoea", text: "interrupt for grade ≥3, resume reduced (60 → 40 → 20 mg)." },
+    { label: "Surgery / bleeding", text: "hold ≥3 weeks before elective surgery; discontinue for GI perforation/fistula or severe haemorrhage." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Cabometyx) · FDA label (DailyMed). CABOSUN, METEOR, CELESTIAL",
+  verified: "2026-06-30"
+},
+
+{
+  id: "axitinib",
+  name: "Axitinib",
+  aliases: ["Inlyta"],
+  class: "VEGFR TKI",
+  subclass: "selective VEGFR1-3",
+  route: ["PO"],
+  atc: "L01EK01",
+  brands: ["Inlyta"],
+  tumours: ["Renal"],
+  mechanism: "Selective VEGFR1-3 inhibitor.",
+  dosing: "5 mg PO BID, titrate to 7 → 10 mg BID if tolerated (reduce 3 → 2 mg BID).",
+  cdl: { items: [
+    { cancer: "Renal cell — 2L", status: "MAF", text: "previously treated advanced RCC (AXIS). Also 1L + pembrolizumab/avelumab (see those drugs)." }
+  ] },
+  toxicities: {
+    common: ["Hypertension (prominent)", "Diarrhoea", "Fatigue", "Hand-foot skin reaction", "Hypothyroidism", "Proteinuria"],
+    serious: ["Hypertensive crisis", "Haemorrhage", "RPLS", "Arterial / venous thrombosis", "GI perforation / fistula"]
+  },
+  doseReductions: { other: [
+    { label: "Hypertension", text: "optimise antihypertensives; hold for uncontrolled BP, resume reduced." },
+    { label: "Toxicity", text: "reduce 5 → 3 → 2 mg BID for grade ≥3; hold before surgery." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Inlyta) · FDA label (DailyMed). AXIS",
+  verified: "2026-06-30"
+},
+
+{
+  id: "lenvatinib",
+  name: "Lenvatinib",
+  aliases: ["Lenvima"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/FGFR/RET",
+  route: ["PO"],
+  atc: "L01EX08",
+  brands: ["Lenvima"],
+  tumours: ["Hepatocellular", "Thyroid"],
+  mechanism: "Multikinase VEGFR1-3 / FGFR1-4 / RET inhibitor.",
+  dosing: "HCC: 12 mg daily (≥60 kg) / 8 mg (<60 kg). DTC: 24 mg daily. (20 mg with pembrolizumab/everolimus.)",
+  cdl: { items: [
+    { cancer: "Hepatocellular — 1L", status: "MAF", text: "advanced unresectable, Child-Pugh adequate, HSA-recommended dosing (REFLECT)" },
+    { cancer: "Thyroid — RAI-refractory DTC", status: "MAF", text: "LA/metastatic, progressive, radioactive-iodine-refractory (SELECT)" }
+  ] },
+  toxicities: {
+    common: ["Hypertension (prominent)", "Diarrhoea", "Decreased appetite / weight loss", "Fatigue", "Hand-foot skin reaction", "Proteinuria, hypothyroidism"],
+    serious: ["Haemorrhage", "GI perforation / fistula", "Cardiac dysfunction", "QTc prolongation", "RPLS", "Hepatotoxicity"]
+  },
+  doseReductions: { other: [
+    { label: "Hypertension / proteinuria", text: "control BP; hold for grade ≥3 or nephrotic-range proteinuria, resume reduced." },
+    { label: "Toxicity", text: "stepwise reductions per indication; hold before surgery; discontinue for GI perforation or arterial events." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Lenvima) · FDA label (DailyMed). REFLECT, SELECT",
+  verified: "2026-06-30"
+},
+
+{
+  id: "pazopanib",
+  name: "Pazopanib",
+  aliases: ["Votrient"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/PDGFR/KIT",
+  route: ["PO"],
+  atc: "L01EX03",
+  brands: ["Votrient"],
+  tumours: ["Renal", "Sarcoma"],
+  mechanism: "Multikinase VEGFR / PDGFR / KIT inhibitor.",
+  boxedWarning: "Severe and fatal hepatotoxicity — monitor liver function; interrupt / reduce / discontinue per transaminase and bilirubin levels.",
+  dosing: "800 mg PO once daily on an empty stomach (reduce 800 → 400 → 200 mg).",
+  indications: [
+    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "800 mg daily" },
+    { indication: "Soft-tissue sarcoma — advanced (post-chemo)", hsa: "y", fda: "y", dose: "800 mg daily (PALETTE; excludes adipocytic STS / GIST)" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hypertension", "Diarrhoea", "Hair colour change", "Nausea, anorexia", "Fatigue", "Transaminitis"],
+    serious: ["Severe / fatal hepatotoxicity", "QTc prolongation / torsades", "Haemorrhage", "Arterial thrombosis", "GI perforation / fistula"]
+  },
+  doseReductions: { other: [
+    { label: "Hepatotoxicity", text: "monitor LFTs (baseline + weekly for first 9 weeks); interrupt for ALT >3× ULN, reduce/discontinue per severity." },
+    { label: "QTc / BP", text: "baseline ECG + electrolytes; control hypertension." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Votrient) · FDA label (DailyMed). PALETTE",
+  verified: "2026-06-30"
+},
+
+{
+  id: "sunitinib",
+  name: "Sunitinib",
+  aliases: ["Sutent"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/PDGFR/KIT/FLT3",
+  route: ["PO"],
+  atc: "L01EX01",
+  brands: ["Sutent"],
+  tumours: ["Renal", "GIST", "Neuroendocrine"],
+  mechanism: "Multikinase VEGFR / PDGFR / KIT / FLT3 / RET inhibitor.",
+  boxedWarning: "Severe and fatal hepatotoxicity — monitor liver function; interrupt / discontinue for hepatic failure.",
+  dosing: "RCC/GIST: 50 mg daily, 4 weeks on / 2 off. pNET: 37.5 mg continuous. (Adjust by 12.5 mg.)",
+  indications: [
+    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "50 mg daily, 4/2 schedule" },
+    { indication: "GIST — post-imatinib", hsa: "y", fda: "y", dose: "50 mg daily, 4/2" },
+    { indication: "Pancreatic NET — advanced", hsa: "y", fda: "y", dose: "37.5 mg continuous" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Fatigue", "Diarrhoea", "Hand-foot skin reaction", "Hypertension", "Mucositis, dysgeusia", "Skin/hair yellow discolouration, hypothyroidism, cytopenias"],
+    serious: ["Severe / fatal hepatotoxicity", "Cardiac dysfunction / LVEF decline", "QTc prolongation", "Haemorrhage / TMA", "Adrenal insufficiency"]
+  },
+  doseReductions: { other: [
+    { label: "Hepatotoxicity / cardiac", text: "monitor LFTs + LVEF; interrupt/reduce by 12.5 mg; discontinue for hepatic failure or symptomatic CHF." },
+    { label: "HFSR / BP", text: "supportive care; control hypertension; hold for grade ≥3." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Sutent) · FDA label (DailyMed)",
+  verified: "2026-06-30"
+},
+
+{
+  id: "sorafenib",
+  name: "Sorafenib",
+  aliases: ["Nexavar"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/PDGFR/RAF",
+  route: ["PO"],
+  atc: "L01EX02",
+  brands: ["Nexavar"],
+  tumours: ["Hepatocellular", "Renal", "Thyroid"],
+  mechanism: "Multikinase VEGFR / PDGFR / RAF / KIT inhibitor.",
+  dosing: "400 mg PO BID on an empty stomach (reduce to 400 mg daily → 400 mg every other day).",
+  indications: [
+    { indication: "Hepatocellular — advanced", hsa: "y", fda: "y", dose: "400 mg BID (SHARP)" },
+    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "400 mg BID" },
+    { indication: "Thyroid — RAI-refractory DTC", hsa: "y", fda: "y", dose: "400 mg BID (DECISION)" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hand-foot skin reaction (prominent)", "Diarrhoea", "Rash, alopecia", "Hypertension", "Fatigue", "Hypophosphataemia"],
+    serious: ["Cardiac ischaemia", "Haemorrhage", "GI perforation", "Hepatotoxicity", "QTc prolongation", "Severe skin reactions (SJS/TEN, rare)"]
+  },
+  doseReductions: { other: [
+    { label: "HFSR", text: "emollients / urea cream; interrupt for grade ≥2-3, resume reduced (400 daily → 400 every other day)." },
+    { label: "Cardiac / bleeding", text: "hold for cardiac ischaemia or significant bleeding." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Nexavar) · FDA label (DailyMed). SHARP, DECISION",
+  verified: "2026-06-30"
+},
+
+{
+  id: "regorafenib",
+  name: "Regorafenib",
+  aliases: ["Stivarga"],
+  class: "VEGFR TKI",
+  subclass: "VEGFR/KIT/RAF/RET",
+  route: ["PO"],
+  atc: "L01EX05",
+  brands: ["Stivarga"],
+  tumours: ["Colorectal", "Hepatocellular", "Sarcoma"],
+  mechanism: "Multikinase VEGFR / KIT / RET / RAF / PDGFR inhibitor.",
+  boxedWarning: "Severe and fatal hepatotoxicity — monitor liver function; interrupt / reduce / discontinue per transaminase and bilirubin levels.",
+  dosing: "160 mg PO once daily, 3 weeks on / 1 off (reduce 120 → 80 mg).",
+  cdl: { items: [
+    { cancer: "Colorectal — metastatic (refractory)", status: "MAF", text: "after fluoropyrimidine/oxaliplatin/irinotecan, anti-VEGF, anti-EGFR if RAS-wt (CORRECT)" },
+    { cancer: "Hepatocellular — 2L", status: "MAF", text: "advanced unresectable, after ≥1 prior line, Child-Pugh adequate (RESORCE)" },
+    { cancer: "GIST — post-imatinib", status: "MAF", text: "LA/unresectable/metastatic, previously treated with imatinib (GRID)" }
+  ] },
+  toxicities: {
+    common: ["Hand-foot skin reaction (prominent)", "Fatigue", "Diarrhoea", "Hypertension", "Mucositis, rash", "Weight loss, hypophosphataemia, transaminitis"],
+    serious: ["Severe / fatal hepatotoxicity", "Haemorrhage", "GI perforation / fistula", "Severe skin reactions", "RPLS", "Cardiac ischaemia"]
+  },
+  doseReductions: { other: [
+    { label: "Hepatotoxicity", text: "monitor LFTs (baseline + every 2 weeks for first 2 months); interrupt/reduce/discontinue per transaminase / bilirubin." },
+    { label: "HFSR", text: "interrupt for grade ≥2-3, resume reduced (160 → 120 → 80 mg)." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Stivarga) · FDA label (DailyMed). CORRECT, RESORCE, GRID",
+  verified: "2026-06-30"
+},
+
+{
+  id: "fruquintinib",
+  name: "Fruquintinib",
+  aliases: ["Fruzaqla"],
+  class: "VEGFR TKI",
+  subclass: "selective VEGFR1-3",
+  route: ["PO"],
+  atc: "L01EK03",
+  brands: ["Fruzaqla"],
+  tumours: ["Colorectal"],
+  mechanism: "Selective VEGFR1-3 inhibitor.",
+  dosing: "5 mg PO once daily, 3 weeks on / 1 off (reduce 4 → 3 mg).",
+  cdl: { items: [
+    { cancer: "Colorectal — metastatic (refractory)", status: "MAF", text: "after fluoropyrimidine/oxaliplatin/irinotecan, anti-VEGF, anti-EGFR if RAS-wt (FRESCO-2)" }
+  ] },
+  toxicities: {
+    common: ["Hypertension", "Hand-foot skin reaction", "Proteinuria", "Fatigue, diarrhoea", "Hypothyroidism, dysphonia"],
+    serious: ["Haemorrhage", "GI perforation", "RPLS", "Severe hypertension"]
+  },
+  doseReductions: { other: [
+    { label: "Hypertension / proteinuria", text: "control BP; hold for grade ≥3, resume reduced (5 → 4 → 3 mg)." },
+    { label: "Bleeding / GI", text: "hold before surgery; discontinue for GI perforation or severe haemorrhage." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Fruzaqla) · FDA label (DailyMed). FRESCO-2",
+  verified: "2026-06-30"
 }
 
 ];
