@@ -1666,6 +1666,146 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Xalkori) · FDA label (DailyMed). PROFILE-1001/1014",
   verified: "2026-06-30"
+},
+
+{
+  id: "entrectinib",
+  name: "Entrectinib",
+  aliases: ["Rozlytrek"],
+  class: "ROS1/NTRK inhibitor",
+  subclass: "CNS-active",
+  route: ["PO"],
+  atc: "L01EX14",
+  brands: ["Rozlytrek"],
+  tumours: ["Lung — NSCLC", "Tumour-agnostic"],
+  mechanism: "ROS1 / NTRK / ALK TKI with CNS penetration.",
+  dosing: "600 mg PO once daily (reduce 600 → 400 → 200 mg).",
+  cdl: { items: [
+    { cancer: "NSCLC — advanced (ROS1+)", status: "MSV/MSHL", text: "LA/metastatic ROS1+ NSCLC, no prior ROS1 inhibitor" },
+    { cancer: "Tumour-agnostic (NTRK fusion)", status: "MSV/MSHL", text: "solid tumours with NTRK fusion (no resistance mutation), metastatic / unresectable, no satisfactory alternative" }
+  ] },
+  toxicities: {
+    common: ["Dysgeusia", "Fatigue, dizziness", "Constipation", "Oedema, weight gain", "Peripheral neuropathy"],
+    serious: ["CHF / LVEF decline", "QTc prolongation", "CNS / cognitive effects", "Hepatotoxicity", "Skeletal fractures"]
+  },
+  doseReductions: { other: [
+    { label: "Toxicity", text: "reduce 600 → 400 → 200 mg for grade ≥3 (cardiac, CNS, hepatic, QTc)." },
+    { label: "CHF / QTc", text: "monitor LVEF + ECG; hold/discontinue for significant decline or QTc >500 ms." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Rozlytrek) · FDA label (DailyMed). STARTRK-2",
+  verified: "2026-06-30"
+},
+
+{
+  id: "larotrectinib",
+  name: "Larotrectinib",
+  aliases: ["Vitrakvi"],
+  class: "NTRK inhibitor",
+  subclass: "selective TRK",
+  route: ["PO"],
+  atc: "L01EX12",
+  brands: ["Vitrakvi"],
+  tumours: ["Tumour-agnostic"],
+  mechanism: "Highly selective TRK (NTRK1/2/3) inhibitor — tumour-agnostic for NTRK-fusion solid tumours.",
+  dosing: "100 mg PO BID (reduce per toxicity).",
+  cdl: { items: [
+    { cancer: "Tumour-agnostic (NTRK fusion)", status: "MSV/MSHL", text: "solid tumours with NTRK fusion (no resistance mutation), metastatic / unresectable, no satisfactory alternative (NAVIGATE)" }
+  ] },
+  toxicities: {
+    common: ["Fatigue, dizziness", "Nausea", "Transaminitis", "Cough", "Constipation"],
+    serious: ["Hepatotoxicity", "CNS effects (dizziness, cognitive)", "Skeletal fractures"]
+  },
+  doseReductions: { other: [
+    { label: "Toxicity", text: "reduce stepwise for grade ≥3 (hepatic, CNS); monitor LFTs." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Vitrakvi) · FDA label (DailyMed). NAVIGATE / LOXO-TRK",
+  verified: "2026-06-30"
+},
+
+{
+  id: "tepotinib",
+  name: "Tepotinib",
+  aliases: ["Tepmetko"],
+  class: "MET inhibitor",
+  subclass: "selective MET",
+  route: ["PO"],
+  atc: "L01EX21",
+  brands: ["Tepmetko"],
+  tumours: ["Lung — NSCLC"],
+  mechanism: "Selective MET TKI for MET exon-14 skipping NSCLC.",
+  dosing: "450 mg PO once daily with food (reduce to 225 mg).",
+  cdl: { items: [
+    { cancer: "NSCLC — metastatic (METex14)", status: "MAF", text: "MET exon-14 skipping alterations (VISION)" }
+  ] },
+  toxicities: {
+    common: ["Peripheral oedema (prominent)", "Nausea, diarrhoea", "Hypoalbuminaemia", "Transaminitis", "Fatigue"],
+    serious: ["ILD / pneumonitis", "Hepatotoxicity", "Severe fluid retention"]
+  },
+  doseReductions: { other: [
+    { label: "Oedema", text: "diuretics / supportive; interrupt for grade ≥3, resume at 225 mg." },
+    { label: "ILD / hepatic", text: "discontinue for confirmed ILD; hold for grade ≥3 transaminitis." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Tepmetko) · FDA label (DailyMed). VISION",
+  verified: "2026-06-30"
+},
+
+{
+  id: "dabrafenib-trametinib",
+  name: "Dabrafenib + trametinib",
+  aliases: ["Tafinlar + Mekinist", "dabrafenib", "trametinib"],
+  class: "BRAF/MEK inhibitor",
+  subclass: "BRAF + MEK combination",
+  route: ["PO"],
+  atc: "L01EC02",
+  brands: ["Tafinlar", "Mekinist"],
+  tumours: ["Melanoma", "Lung — NSCLC", "Thyroid", "CNS"],
+  mechanism: "BRAF (dabrafenib) + MEK (trametinib) inhibitor combination for BRAF V600-mutant tumours; dual blockade limits paradoxical MAPK activation and delays resistance.",
+  dosing: "Dabrafenib 150 mg PO BID + trametinib 2 mg PO once daily.",
+  cdl: { items: [
+    { cancer: "Melanoma — advanced (BRAF V600)", status: "MAF", text: "unresectable/metastatic, no prior BRAF/MEK inhibitor (COMBI-d/v)" },
+    { cancer: "Melanoma — adjuvant (BRAF V600)", status: "MSV/MSHL", text: "resected, node+; max 12 mo (COMBI-AD)" },
+    { cancer: "NSCLC — advanced (BRAF V600)", status: "MAF", text: "BRAF V600-mutant advanced NSCLC" },
+    { cancer: "Anaplastic thyroid (BRAF V600)", status: "MAF", text: "LA/metastatic, no satisfactory locoregional option (ROAR)" },
+    { cancer: "Glioma — paediatric LGG/HGG (BRAF V600E)", status: "MAF", text: "≥1 yr; LGG needing systemic therapy, or HGG post-prior treatment" }
+  ] },
+  toxicities: {
+    common: ["Pyrexia (characteristic — fever ± chills/rigors)", "Fatigue, chills", "Rash, arthralgia", "Nausea, diarrhoea", "Headache"],
+    serious: ["High fever / hypotension (pyrexia syndrome)", "Cardiomyopathy / LVEF decline", "Ocular — uveitis, retinal vein occlusion", "Haemorrhage, VTE", "Hyperglycaemia, hepatotoxicity", "Serious skin reactions (fewer cutaneous SCCs than BRAF monotherapy)"]
+  },
+  doseReductions: { other: [
+    { label: "Pyrexia", text: "interrupt BOTH drugs for fever ≥38.5°C; antipyretics ± short corticosteroid; resume when afebrile ≥24 h. Recurrent → dose-reduce." },
+    { label: "Cardiac / ocular", text: "baseline + periodic LVEF; hold for symptomatic LVEF drop or serious eye toxicity." },
+    { label: "Other toxicity", text: "reduce dabrafenib (150 → 100 → 75 → 50 BID) and/or trametinib (2 → 1.5 → 1 mg) per component." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Tafinlar/Mekinist) · FDA label (DailyMed). COMBI-d/v/AD, ROAR",
+  verified: "2026-06-30"
+},
+
+{
+  id: "encorafenib",
+  name: "Encorafenib",
+  aliases: ["Braftovi"],
+  class: "BRAF inhibitor",
+  subclass: "BRAF V600",
+  route: ["PO"],
+  atc: "L01EC03",
+  brands: ["Braftovi"],
+  tumours: ["Colorectal", "Melanoma"],
+  mechanism: "BRAF V600 inhibitor. Funded in SG for BRAF V600E mCRC with cetuximab; also melanoma with binimetinib (MEK) — always combined to limit paradoxical activation.",
+  dosing: "mCRC: 300 mg PO daily + cetuximab. Melanoma: 450 mg PO daily + binimetinib 45 mg BID.",
+  cdl: { items: [
+    { cancer: "Colorectal — BRAF V600E (+ cetuximab)", status: "MSV/MSHL", text: "metastatic, after prior systemic therapy (BEACON CRC)" }
+  ] },
+  toxicities: {
+    common: ["Fatigue", "Nausea, diarrhoea", "Arthralgia, myalgia", "Dermatologic — rash, hyperkeratosis", "Headache"],
+    serious: ["Secondary cutaneous malignancies (keratoacanthoma / SCC)", "QTc prolongation", "Hepatotoxicity", "Uveitis", "Haemorrhage"]
+  },
+  doseReductions: { other: [
+    { label: "Always combine", text: "do not use as BRAF monotherapy (paradoxical MAPK activation) — give with cetuximab (CRC) or binimetinib (melanoma)." },
+    { label: "Toxicity", text: "reduce stepwise for grade ≥3 (skin, QTc, hepatic); dermatologic surveillance for new skin lesions." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Braftovi) · FDA label (DailyMed). BEACON CRC; COLUMBUS (melanoma)",
+  verified: "2026-06-30"
 }
 
 ];
