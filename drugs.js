@@ -2462,6 +2462,473 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Erivedge) · FDA label (DailyMed). ERIVANCE",
   verified: "2026-06-30"
+},
+
+{
+  id: "anastrozole",
+  name: "Anastrozole",
+  aliases: ["Arimidex"],
+  class: "Aromatase inhibitor",
+  subclass: "non-steroidal",
+  route: ["PO"],
+  atc: "L02BG03",
+  brands: ["Arimidex"],
+  tumours: ["Breast"],
+  mechanism: "Non-steroidal aromatase inhibitor — blocks peripheral oestrogen synthesis in postmenopausal women.",
+  indications: [
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "1 mg PO once daily" },
+    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", fda: "y", dose: "1 mg PO once daily" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Arthralgia / joint stiffness", "Bone loss (osteopenia/osteoporosis)", "Fatigue", "Vaginal dryness", "Raised cholesterol"],
+    serious: ["Osteoporotic fractures", "Ischaemic cardiovascular events", "Rare hepatitis"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Bone health", text: "baseline + serial DEXA; calcium/vitamin D; bisphosphonate or denosumab for declining BMD. No formal dose-reduction levels." },
+    { label: "Arthralgia", text: "analgesia / exercise; consider switch to tamoxifen or another AI if intolerable." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Arimidex) · FDA label (DailyMed). ATAC",
+  verified: "2026-07-01"
+},
+
+{
+  id: "letrozole",
+  name: "Letrozole",
+  aliases: ["Femara"],
+  class: "Aromatase inhibitor",
+  subclass: "non-steroidal",
+  route: ["PO"],
+  atc: "L02BG04",
+  brands: ["Femara"],
+  tumours: ["Breast"],
+  mechanism: "Non-steroidal aromatase inhibitor.",
+  indications: [
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "2.5 mg PO once daily" },
+    { indication: "Breast — HR+ extended adjuvant", hsa: "y", fda: "y", dose: "2.5 mg PO once daily (after ~5 yr tamoxifen)" },
+    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", fda: "y", dose: "2.5 mg PO once daily (± CDK4/6 inhibitor)" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Arthralgia / myalgia", "Bone loss", "Fatigue", "Raised cholesterol", "Headache"],
+    serious: ["Osteoporotic fractures", "Ischaemic cardiovascular events", "Rare hepatitis"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Bone health", text: "baseline + serial DEXA; calcium/vitamin D; antiresorptive therapy for BMD decline. No formal dose-reduction levels." },
+    { label: "Arthralgia", text: "analgesia / exercise; consider AI switch or tamoxifen if intolerable." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Femara) · FDA label (DailyMed). BIG 1-98, MA.17",
+  verified: "2026-07-01"
+},
+
+{
+  id: "exemestane",
+  name: "Exemestane",
+  aliases: ["Aromasin"],
+  class: "Aromatase inhibitor",
+  subclass: "steroidal (irreversible)",
+  route: ["PO"],
+  atc: "L02BG06",
+  brands: ["Aromasin"],
+  tumours: ["Breast"],
+  mechanism: "Steroidal (irreversible) aromatase inactivator.",
+  indications: [
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "25 mg PO once daily after food (switch after 2-3 yr tamoxifen)" },
+    { indication: "Breast — HR+ advanced (post non-steroidal AI)", hsa: "y", fda: "y", dose: "25 mg PO once daily after food" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Arthralgia", "Fatigue", "Bone loss", "Increased sweating", "Nausea"],
+    serious: ["Osteoporotic fractures", "Ischaemic cardiovascular events", "Rare hepatitis"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Bone health", text: "baseline + serial DEXA; calcium/vitamin D; antiresorptive therapy for BMD decline. No formal dose-reduction levels." },
+    { label: "Arthralgia", text: "analgesia / exercise; AI switch if intolerable." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Aromasin) · FDA label (DailyMed). IES, TEXT/SOFT (+ OFS)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "tamoxifen",
+  name: "Tamoxifen",
+  aliases: ["Nolvadex"],
+  class: "SERM",
+  subclass: "selective oestrogen-receptor modulator",
+  route: ["PO"],
+  atc: "L02BA01",
+  brands: ["Nolvadex"],
+  tumours: ["Breast"],
+  mechanism: "Selective oestrogen-receptor modulator — antagonist in breast, partial agonist in endometrium/bone.",
+  boxedWarning: "Serious, sometimes fatal events in risk-reduction / DCIS use — uterine malignancies (endometrial carcinoma + uterine sarcoma), stroke, and pulmonary embolism. Discuss benefit-risk for women at high risk of breast cancer or with DCIS.",
+  indications: [
+    { indication: "Breast — HR+ adjuvant (pre- or post-menopausal)", hsa: "y", fda: "y", dose: "20 mg PO once daily" },
+    { indication: "Breast — HR+ advanced / metastatic", hsa: "y", fda: "y", dose: "20 mg PO once daily (up to 40 mg)" },
+    { indication: "Breast — DCIS / risk reduction", hsa: "y", fda: "y", dose: "20 mg PO once daily × 5 yr" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Vaginal discharge / bleeding", "Menstrual changes", "Mood changes", "Fluid retention", "Cataracts"],
+    serious: ["Endometrial carcinoma / uterine sarcoma", "Venous thromboembolism (DVT/PE)", "Stroke", "Rare hepatotoxicity"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Endometrial surveillance", text: "report abnormal vaginal bleeding promptly; gynaecological assessment for any postmenopausal bleeding." },
+    { label: "Thromboembolism", text: "assess VTE risk; consider interruption around major surgery / immobility; counsel on symptoms." },
+    { label: "Drug interactions", text: "avoid potent CYP2D6 inhibitors (e.g. paroxetine, fluoxetine) — reduce active endoxifen." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Nolvadex) · FDA label (DailyMed). EBCTCG, NSABP P-1",
+  verified: "2026-07-01"
+},
+
+{
+  id: "fulvestrant",
+  name: "Fulvestrant",
+  aliases: ["Faslodex"],
+  class: "SERD",
+  subclass: "selective oestrogen-receptor degrader",
+  route: ["IM"],
+  atc: "L02BA03",
+  brands: ["Faslodex"],
+  tumours: ["Breast"],
+  mechanism: "Selective oestrogen-receptor degrader — binds and downregulates ER, no agonist activity.",
+  dosing: "500 mg IM (two 250 mg injections, one in each buttock) on days 1, 15, 29, then every 28 days. Often combined with a CDK4/6 inhibitor or alpelisib (PIK3CA-mut).",
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Injection-site reactions", "Hot flushes", "Arthralgia / myalgia", "Nausea", "Fatigue", "Raised transaminases"],
+    serious: ["Injection-site nerve injury (sciatic / neuropathy)", "Hepatic impairment caution", "Hypersensitivity"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Hepatic impairment", text: "moderate impairment (Child-Pugh B): reduce to 250 mg per schedule; not studied in severe impairment." },
+    { label: "Injection technique", text: "slow IM into gluteus; avoid the dorsogluteal sciatic region. No cytotoxic dose-reduction levels." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Faslodex) · FDA label (DailyMed). CONFIRM, FALCON",
+  verified: "2026-07-01"
+},
+
+{
+  id: "goserelin",
+  name: "Goserelin",
+  aliases: ["Zoladex"],
+  class: "GnRH agonist",
+  subclass: "LHRH agonist",
+  route: ["SC"],
+  atc: "L02AE03",
+  brands: ["Zoladex"],
+  tumours: ["Prostate", "Breast"],
+  mechanism: "GnRH (LHRH) agonist — chronic stimulation downregulates pituitary GnRH receptors → medical castration. Initial testosterone/oestrogen surge ('flare').",
+  indications: [
+    { indication: "Prostate — advanced / metastatic", hsa: "y", fda: "y", dose: "3.6 mg SC every 28 days, or 10.8 mg SC every 12 weeks (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre/peri-menopausal (advanced or adjuvant OFS)", hsa: "y", fda: "y", dose: "3.6 mg SC every 28 days" }
+  ],
+  cdl: { class: "MAF", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Reduced libido / erectile dysfunction", "Injection-site reactions", "Sweating", "Mood changes", "Weight gain"],
+    serious: ["Tumour flare (cord compression / ureteric obstruction in prostate)", "Reduced bone mineral density", "Metabolic / cardiovascular effects", "Hyperglycaemia"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Tumour flare (prostate)", text: "start an antiandrogen (e.g. bicalutamide) before / with the first dose in high-volume or symptomatic disease." },
+    { label: "Bone / metabolic", text: "monitor BMD + glucose/lipids on long-term androgen deprivation; bone-protective therapy as needed." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF) · HSA register (Zoladex) · FDA label (DailyMed). TEXT/SOFT, prostate ADT",
+  verified: "2026-07-01"
+},
+
+{
+  id: "leuprorelin",
+  name: "Leuprorelin",
+  aliases: ["Leuprolide", "Lucrin", "Eligard"],
+  class: "GnRH agonist",
+  subclass: "LHRH agonist",
+  route: ["IM", "SC"],
+  atc: "L02AE02",
+  brands: ["Lucrin", "Eligard"],
+  tumours: ["Prostate", "Breast"],
+  mechanism: "GnRH (LHRH) agonist — medical castration after an initial testosterone flare.",
+  indications: [
+    { indication: "Prostate — advanced / metastatic", hsa: "y", fda: "y", dose: "Depot 7.5 mg monthly / 22.5 mg q3-monthly / 45 mg q6-monthly (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", fda: "n", dose: "Depot 3.75 mg monthly" }
+  ],
+  cdl: { class: "MAF", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Reduced libido / erectile dysfunction", "Injection-site reactions", "Fatigue", "Sweating", "Weight gain"],
+    serious: ["Tumour flare (prostate)", "Reduced bone mineral density", "Hyperglycaemia / diabetes", "Cardiovascular events", "QTc prolongation"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Tumour flare (prostate)", text: "antiandrogen before / with the first depot in symptomatic or high-volume disease." },
+    { label: "Bone / metabolic / cardiac", text: "monitor BMD, glucose/lipids on long-term ADT; assess cardiovascular + QTc risk." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF) · HSA register (Lucrin / Eligard) · FDA label (DailyMed). Prostate ADT",
+  verified: "2026-07-01"
+},
+
+{
+  id: "triptorelin",
+  name: "Triptorelin",
+  aliases: ["Decapeptyl", "Diphereline"],
+  class: "GnRH agonist",
+  subclass: "LHRH agonist",
+  route: ["IM"],
+  atc: "L02AE04",
+  brands: ["Diphereline", "Decapeptyl"],
+  tumours: ["Prostate", "Breast"],
+  mechanism: "GnRH (LHRH) agonist — medical castration after an initial flare.",
+  indications: [
+    { indication: "Prostate — locally advanced / metastatic", hsa: "y", fda: "y", dose: "Depot 3.75 mg monthly / 11.25 mg q3-monthly / 22.5 mg q6-monthly (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", fda: "n", dose: "Depot 3.75 mg monthly" }
+  ],
+  cdl: { class: "MAF", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hot flushes", "Reduced libido / erectile dysfunction", "Injection-site reactions", "Fatigue", "Sweating"],
+    serious: ["Tumour flare (prostate)", "Reduced bone mineral density", "Hyperglycaemia", "Cardiovascular events"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Tumour flare (prostate)", text: "antiandrogen cover before / with the first depot in symptomatic disease." },
+    { label: "Bone / metabolic", text: "monitor BMD + glucose on long-term ADT; bone protection as indicated." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF; one prostate product row listed No-subsidy → MSV/MSHL) · HSA register (Diphereline) · FDA label (DailyMed)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "degarelix",
+  name: "Degarelix",
+  aliases: ["Firmagon"],
+  class: "GnRH antagonist",
+  subclass: "LHRH antagonist",
+  route: ["SC"],
+  atc: "L02BX02",
+  brands: ["Firmagon"],
+  tumours: ["Prostate"],
+  mechanism: "GnRH (LHRH) antagonist — immediate, direct receptor blockade → rapid testosterone suppression with no flare.",
+  dosing: "Loading 240 mg SC (two 120 mg injections), then 80 mg SC every 28 days.",
+  cdl: { items: [
+    { cancer: "Prostate — advanced hormone-dependent", status: "MAF", text: "advanced hormone-dependent prostate cancer; no antiandrogen flare cover required" }
+  ] },
+  toxicities: {
+    common: ["Injection-site reactions (prominent — erythema, pain, swelling)", "Hot flushes", "Weight gain", "Fatigue", "Raised transaminases"],
+    serious: ["QTc prolongation", "Reduced bone mineral density", "Hypersensitivity / anaphylaxis (rare)"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "No flare cover", text: "antagonist gives immediate suppression — unlike agonists, no antiandrogen flare prophylaxis needed (useful when cord-compression risk)." },
+    { label: "Cardiac / bone", text: "assess QTc + electrolytes; monitor BMD on long-term androgen deprivation." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF) · HSA register (Firmagon) · FDA label (DailyMed). CS21",
+  verified: "2026-07-01"
+},
+
+{
+  id: "bicalutamide",
+  name: "Bicalutamide",
+  aliases: ["Casodex"],
+  class: "Antiandrogen",
+  subclass: "non-steroidal (first-generation)",
+  route: ["PO"],
+  atc: "L02BB03",
+  brands: ["Casodex"],
+  tumours: ["Prostate"],
+  mechanism: "First-generation non-steroidal androgen-receptor antagonist.",
+  indications: [
+    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", fda: "y", dose: "50 mg PO once daily (combined androgen blockade)" },
+    { indication: "Prostate — flare prophylaxis at LHRH-agonist start", hsa: "y", fda: "y", dose: "50 mg PO once daily, started before / with the agonist" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Gynaecomastia / breast tenderness", "Hot flushes", "Reduced libido", "Asthenia", "Raised transaminases"],
+    serious: ["Hepatotoxicity (monitor LFTs)", "Interstitial lung disease (rare)", "Photosensitivity"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Hepatic", text: "check LFTs at baseline, then periodically; discontinue for severe transaminitis / jaundice." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Casodex) · FDA label (DailyMed)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "flutamide",
+  name: "Flutamide",
+  aliases: ["Eulexin"],
+  class: "Antiandrogen",
+  subclass: "non-steroidal (first-generation)",
+  route: ["PO"],
+  atc: "L02BB01",
+  brands: ["Eulexin"],
+  tumours: ["Prostate"],
+  mechanism: "First-generation non-steroidal androgen-receptor antagonist.",
+  boxedWarning: "Hepatic injury — hospitalisation and deaths from hepatic failure reported. Measure serum transaminases before starting, monthly for the first 4 months, then periodically; stop immediately for jaundice or ALT > 2× upper limit of normal.",
+  indications: [
+    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", fda: "y", dose: "250 mg PO three times daily" }
+  ],
+  cdl: { items: [
+    { cancer: "Prostate — advanced", status: "MSV/MSHL", text: "with an LHRH agonist for previously untreated advanced prostate cancer" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea (prominent)", "Gynaecomastia", "Hot flushes", "Reduced libido", "Nausea"],
+    serious: ["Hepatic failure / fatal hepatotoxicity", "Methaemoglobinaemia", "Interstitial pneumonitis"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Hepatic monitoring", text: "LFTs at baseline, monthly × 4 months, then periodically; stop immediately for jaundice or ALT > 2× ULN." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Eulexin) · FDA label (DailyMed)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "cyproterone",
+  name: "Cyproterone acetate",
+  aliases: ["Androcur"],
+  class: "Antiandrogen",
+  subclass: "steroidal",
+  route: ["PO"],
+  atc: "L02BB04",
+  brands: ["Androcur"],
+  tumours: ["Prostate"],
+  mechanism: "Steroidal androgen-receptor antagonist with progestogenic / central anti-gonadotrophic activity. (Not FDA-approved; HSA-registered.)",
+  indications: [
+    { indication: "Prostate — advanced", hsa: "y", fda: "n", dose: "100 mg PO 2-3 times daily" },
+    { indication: "Prostate — LHRH-agonist flare cover", hsa: "y", fda: "n", dose: "100 mg PO 2-3 times daily around agonist initiation" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Gynaecomastia", "Reduced libido / erectile dysfunction", "Fatigue", "Weight changes", "Mood changes"],
+    serious: ["Dose-dependent hepatotoxicity (some fatal — monitor LFTs)", "Venous thromboembolism", "Meningioma (long-term, high cumulative dose)", "Depression"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Hepatic", text: "monitor LFTs before and during treatment; stop for significant hepatotoxicity." },
+    { label: "Meningioma / VTE", text: "weigh long-term high-dose meningioma risk; assess thromboembolic risk; stop if meningioma diagnosed." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Androcur). Not FDA-approved (EU SmPC used for label detail)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "abiraterone",
+  name: "Abiraterone acetate",
+  aliases: ["Zytiga"],
+  class: "CYP17 inhibitor",
+  subclass: "androgen-biosynthesis inhibitor",
+  route: ["PO"],
+  atc: "L02BX03",
+  brands: ["Zytiga"],
+  tumours: ["Prostate"],
+  mechanism: "CYP17 (17α-hydroxylase / C17,20-lyase) inhibitor — blocks androgen synthesis in testes, adrenals and tumour. Given with prednisolone to offset mineralocorticoid excess.",
+  indications: [
+    { indication: "Prostate — metastatic castration-resistant (mCRPC)", hsa: "y", fda: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg twice daily; with ADT" },
+    { indication: "Prostate — metastatic hormone-sensitive (mHSPC, high-risk)", hsa: "y", fda: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg once daily; with ADT" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Hypertension", "Hypokalaemia", "Fluid retention / oedema", "Fatigue", "Hot flushes", "Raised transaminases"],
+    serious: ["Hepatotoxicity (monitor LFTs)", "Mineralocorticoid excess (hypertension, hypokalaemia, fluid overload)", "Cardiac failure / arrhythmia", "Adrenocortical insufficiency on stress / steroid withdrawal"]
+  },
+  doseModLabel: "Monitoring & dose modification",
+  doseReductions: { other: [
+    { label: "Administration", text: "take on an empty stomach (food markedly increases exposure); co-administer prednisolone; never omit the steroid." },
+    { label: "Hepatic", text: "LFTs every 2 weeks × 3 months then monthly; hold for ALT/AST > 5× ULN, resume reduced (1000 → 750 → 500 mg) once recovered." },
+    { label: "Mineralocorticoid effects", text: "monitor BP, potassium, fluid status; treat hypertension / hypokalaemia." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026; SDL subsidised + a non-subsidised brand row → MSV/MSHL) · HSA register (Zytiga) · FDA label (DailyMed). COU-AA-301/302, LATITUDE",
+  verified: "2026-07-01"
+},
+
+{
+  id: "enzalutamide",
+  name: "Enzalutamide",
+  aliases: ["Xtandi"],
+  class: "Androgen receptor inhibitor",
+  subclass: "second-generation",
+  route: ["PO"],
+  atc: "L02BB04",
+  brands: ["Xtandi"],
+  tumours: ["Prostate"],
+  mechanism: "Second-generation androgen-receptor inhibitor — blocks AR binding, nuclear translocation and DNA interaction.",
+  dosing: "160 mg PO once daily, with ADT (continue GnRH analogue or post-orchidectomy).",
+  cdl: { items: [
+    { cancer: "Prostate — nmCRPC (high-risk)", status: "MAF", text: "+ ADT, non-metastatic castration-resistant (PROSPER)" },
+    { cancer: "Prostate — mCRPC", status: "MAF", text: "+ ADT, metastatic castration-resistant (AFFIRM, PREVAIL)" },
+    { cancer: "Prostate — mHSPC", status: "MAF", text: "+ ADT, metastatic hormone-sensitive (ARCHES, ENZAMET)" }
+  ] },
+  toxicities: {
+    common: ["Fatigue / asthenia", "Hot flushes", "Hypertension", "Falls", "Arthralgia", "Reduced libido"],
+    serious: ["Seizures (lowers threshold)", "Posterior reversible encephalopathy syndrome (PRES, rare)", "Falls / fractures", "Ischaemic cardiovascular events", "Hypertension"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Toxicity", text: "withhold 1 week for grade ≥3 toxicity, resume at same or reduced dose (120 → 80 mg)." },
+    { label: "Seizure / CNS", text: "caution with seizure-threshold-lowering drugs or predisposing factors; discontinue for seizure or PRES." },
+    { label: "Falls / cardiovascular", text: "assess falls risk; monitor BP." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF ×3) · HSA register (Xtandi) · FDA label (DailyMed). AFFIRM, PREVAIL, PROSPER, ARCHES, ENZAMET",
+  verified: "2026-07-01"
+},
+
+{
+  id: "apalutamide",
+  name: "Apalutamide",
+  aliases: ["Erleada"],
+  class: "Androgen receptor inhibitor",
+  subclass: "second-generation",
+  route: ["PO"],
+  atc: "L02BB05",
+  brands: ["Erleada"],
+  tumours: ["Prostate"],
+  mechanism: "Second-generation androgen-receptor inhibitor.",
+  dosing: "240 mg PO once daily, with ADT.",
+  cdl: { items: [
+    { cancer: "Prostate — nmCRPC (high-risk)", status: "MSV/MSHL", text: "+ ADT, non-metastatic castration-resistant (SPARTAN)" },
+    { cancer: "Prostate — mHSPC", status: "MSV/MSHL", text: "+ ADT, metastatic hormone-sensitive (TITAN)" }
+  ] },
+  toxicities: {
+    common: ["Rash (prominent)", "Fatigue", "Hypertension", "Hot flushes", "Arthralgia", "Falls", "Hypothyroidism"],
+    serious: ["Severe cutaneous reactions (SJS/TEN, DRESS)", "Falls / fractures", "Seizures (rare)", "Ischaemic cardiovascular events"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Rash", text: "topical steroids / antihistamines for mild; withhold for grade ≥3, resume reduced (180 → 120 mg); discontinue for SJS/TEN/DRESS." },
+    { label: "Thyroid / falls", text: "monitor TSH; assess falls and fracture risk." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MSV/MSHL ×2) · HSA register (Erleada) · FDA label (DailyMed). SPARTAN, TITAN",
+  verified: "2026-07-01"
+},
+
+{
+  id: "darolutamide",
+  name: "Darolutamide",
+  aliases: ["Nubeqa"],
+  class: "Androgen receptor inhibitor",
+  subclass: "second-generation (low CNS penetration)",
+  route: ["PO"],
+  atc: "L02BB06",
+  brands: ["Nubeqa"],
+  tumours: ["Prostate"],
+  mechanism: "Second-generation androgen-receptor inhibitor with low blood-brain-barrier penetration (fewer CNS effects).",
+  dosing: "600 mg PO twice daily with food, with ADT.",
+  cdl: { items: [
+    { cancer: "Prostate — nmCRPC (high-risk)", status: "MAF", text: "+ ADT, non-metastatic castration-resistant (ARAMIS)" },
+    { cancer: "Prostate — mHSPC", status: "MAF", text: "+ ADT + docetaxel, metastatic hormone-sensitive (ARASENS)" }
+  ] },
+  toxicities: {
+    common: ["Fatigue", "Rash", "Pain in extremity", "Raised transaminases / bilirubin", "Reduced neutrophils"],
+    serious: ["Ischaemic cardiovascular events", "Hepatotoxicity", "Lower seizure / fall risk than other AR inhibitors (low CNS penetration)"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Toxicity", text: "withhold for grade ≥3 toxicity until ≤grade 1, resume at 300 mg twice daily; may re-escalate to 600 mg twice daily." },
+    { label: "Cardiac / hepatic", text: "monitor cardiovascular risk + LFTs." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF ×2) · HSA register (Nubeqa) · FDA label (DailyMed). ARAMIS, ARASENS",
+  verified: "2026-07-01"
 }
 
 ];
