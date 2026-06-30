@@ -116,9 +116,13 @@
     color:var(--accent); font-weight:600; flex:0 0 auto;}
   .cdl .word{font-size:12.5px;}
   .cdl .br{color:var(--na);}
-  ul.cdl-items{margin:8px 0 0; padding-left:16px; font-size:11.5px; line-height:1.5;}
-  ul.cdl-items li{margin:2px 0;}
-  ul.cdl-items b{color:var(--accent); font-weight:600;}
+  .cdl-items{margin:8px 0 0; font-size:11.5px; line-height:1.5;}
+  .cdl-item{display:flex; gap:9px; margin:5px 0; align-items:baseline;}
+  .cdl-item .ct b{color:var(--accent); font-weight:600;}
+  .cdl-badge{flex:0 0 auto; display:inline-block; min-width:74px; text-align:center; font-size:9px; padding:2px 6px; border-radius:5px; white-space:nowrap; font-weight:600;}
+  .cdl-badge.b-maf{background:var(--accent-soft); color:var(--accent);}
+  .cdl-badge.b-no{background:var(--warn-bg); color:var(--warn-ink); border:1px solid var(--warn-line);}
+  .cdl-badge.b-nl{background:var(--chip); color:var(--muted);}
 
   .twocol{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;}
   ul.tox{margin:0; padding-left:16px; font-size:12px; line-height:1.55;}
@@ -304,10 +308,11 @@
     const inds = (d.indications && d.indications.length) ? `<div class="sec">
       <h3>Indications · approval · dose</h3>${indTable(d.indications)}</div>` : '';
 
+    const badgeCls = s => (s === 'MAF' || s === 'SDL') ? 'b-maf' : (s && s.toLowerCase().includes('not listed')) ? 'b-nl' : 'b-no';
     const cdl = d.cdl ? `<div class="sec"><h3>CDL status</h3>
-      <div class="cdl"><span class="cls">${esc(d.cdl.class)}</span>${d.cdl.limit ? `<span class="word">${esc(d.cdl.limit)}</span>` : ''}${d.cdl.wording
-        ? `<span class="word"><span class="br">[</span> ${esc(d.cdl.wording)} <span class="br">]</span></span>` : ''}</div>
-      ${(d.cdl.items && d.cdl.items.length) ? `<ul class="cdl-items">${d.cdl.items.map(i => `<li><b>${esc(i.cancer)}:</b> ${esc(i.text)}</li>`).join('')}</ul>` : ''}</div>` : '';
+      ${(d.cdl.class || d.cdl.limit || d.cdl.wording) ? `<div class="cdl">${d.cdl.class ? `<span class="cls">${esc(d.cdl.class)}</span>` : ''}${d.cdl.limit ? `<span class="word">${esc(d.cdl.limit)}</span>` : ''}${d.cdl.wording
+        ? `<span class="word"><span class="br">[</span> ${esc(d.cdl.wording)} <span class="br">]</span></span>` : ''}</div>` : ''}
+      ${(d.cdl.items && d.cdl.items.length) ? `<div class="cdl-items">${d.cdl.items.map(i => `<div class="cdl-item">${i.status ? `<span class="cdl-badge ${badgeCls(i.status)}">${esc(i.status)}</span>` : ''}<span class="ct"><b>${esc(i.cancer)}</b>: ${esc(i.text)}</span></div>`).join('')}</div>` : ''}</div>` : '';
 
     const tox = d.toxicities ? `<div>
       <h3 style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:0 0 7px;">Common toxicities</h3>
@@ -315,7 +320,7 @@
         ${(d.toxicities.serious&&d.toxicities.serious.length)?`<li class="ser">Serious: ${d.toxicities.serious.map(esc).join(', ')}</li>`:''}</ul></div>` : '';
 
     const dr = d.doseReductions ? `<div>
-      <h3 style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:0 0 7px;">Dose reductions</h3>
+      <h3 style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:0 0 7px;">${esc(d.doseModLabel || 'Dose reductions')}</h3>
       ${drTable(d.doseReductions)}</div>` : '';
 
     const twocol = (tox || dr) ? `<div class="twocol">${tox}${dr}</div>` : '';

@@ -766,6 +766,51 @@ window.DRUGS = [
   },
   sources: "HSA SG package insert (Navelbine) · FDA label (DailyMed) · MOH Cancer Drug List (1 Jun 2026, SDL — IV form; some oral forms non-subsidised). NB: FDA-approved for NSCLC; advanced breast is SG/EU.",
   verified: "2026-06-30"
+},
+
+{
+  id: "durvalumab",
+  name: "Durvalumab",
+  aliases: ["Imfinzi"],
+  class: "Checkpoint inhibitor",
+  subclass: "Anti–PD-L1",
+  route: ["IV"],
+  atc: "L01FF03",
+  brands: ["Imfinzi"],
+  tumours: ["Lung — NSCLC", "Lung — SCLC", "Hepatocellular", "Biliary tract"],
+  mechanism: "Anti–PD-L1 monoclonal antibody — blocks PD-L1 binding to PD-1 and CD80, restoring T-cell antitumour activity. Flat dosing; toxicity managed by withholding/steroids, not dose reduction.",
+  indications: [
+    { indication: "Lung — NSCLC (stage III, consolidation)", hsa: "y", fda: "y", dose: "1500 mg q4w × 12 mo, after platinum chemo-RT (PACIFIC)" },
+    { indication: "Lung — small cell (extensive-stage, 1L)", hsa: "y", fda: "y", dose: "1500 mg + platinum/etoposide q3w, then 1500 mg q4w (CASPIAN)" },
+    { indication: "Hepatocellular (1L, unresectable)",       hsa: "y", fda: "y", dose: "1500 mg q4w + single priming dose tremelimumab (STRIDE)" },
+    { indication: "Biliary tract (advanced)",                hsa: "y", fda: "y", dose: "1500 mg q3w + cisplatin/gemcitabine (TOPAZ-1)" }
+  ],
+  cdl: { items: [
+    { cancer: "NSCLC — stage III consolidation", status: "MAF", limit: "$2,000/mth", text: "unresectable, no progression after platinum chemo-RT; max 12 months; retreatment allowed at progression for up to 1 yr if stopped for other reasons" },
+    { cancer: "SCLC — extensive-stage",          status: "MAF", limit: "$2,000/mth", text: "+ platinum + etoposide, untreated" },
+    { cancer: "Hepatocellular (1L)",             status: "MAF", limit: "$2,000–4,600/mth", text: "unresectable, + single priming dose tremelimumab; adequate liver function (Child-Pugh)" },
+    { cancer: "Biliary tract",                   status: "MSV/MSHL", text: "+ cisplatin + gemcitabine, locally advanced/metastatic" }
+  ] },
+  toxicities: {
+    common: [
+      "Immune-related: pneumonitis, colitis / diarrhoea, hepatitis",
+      "Endocrinopathies — thyroid (hypo/hyper), adrenal insufficiency, hypophysitis, T1DM",
+      "Dermatitis / rash, pruritus",
+      "Nephritis",
+      "Fatigue, infusion reactions, cough"
+    ],
+    serious: ["Severe/fatal pneumonitis, colitis, hepatitis", "Myocarditis", "Adrenal crisis / DKA", "Severe skin reactions (SJS/TEN)", "Rare neuro/haematologic irAEs"]
+  },
+  doseModLabel: "irAE management",
+  doseReductions: {
+    other: [
+      { label: "Withhold (grade 2)", text: "moderate irAEs — withhold + corticosteroids (e.g. prednisolone 1–2 mg/kg/day, taper over ≥1 month); resume when ≤grade 1 and steroid ≤10 mg/day." },
+      { label: "Discontinue", text: "permanently for most grade ≥3/4 irAEs, recurrent grade ≥2, or any myocarditis." },
+      { label: "Endocrinopathies", text: "may continue with hormone replacement (thyroid, adrenal, T1DM)." }
+    ]
+  },
+  sources: "MOH Cancer Drug List (1 Jun 2026) · HSA register (Imfinzi) · FDA label (DailyMed). irAE management per CTCAE / ASCO-ESMO guidance",
+  verified: "2026-06-30"
 }
 
 ];
