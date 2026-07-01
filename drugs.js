@@ -3085,6 +3085,92 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026, MAF; acromegaly rows excluded as non-oncology) · HSA register (Somatuline Autogel) · FDA label (DailyMed). CLARINET",
   verified: "2026-07-01"
+},
+
+{
+  id: "radium-223",
+  name: "Radium-223 dichloride",
+  aliases: ["Xofigo", "Ra-223"],
+  class: "Radiopharmaceutical",
+  subclass: "alpha-emitter (bone-targeted)",
+  route: ["IV"],
+  atc: "V10XX03",
+  brands: ["Xofigo"],
+  tumours: ["Prostate"],
+  mechanism: "Alpha-particle-emitting calcium mimetic — localises to newly formed bone stroma in osteoblastic metastases and causes double-strand DNA breaks. Short alpha range limits marrow toxicity.",
+  dosing: "55 kBq/kg body weight by slow IV injection every 4 weeks, for 6 doses.",
+  cdl: { items: [
+    { cancer: "Prostate — CRPC symptomatic bone metastases", status: "MSV/MSHL", text: "castration-resistant, symptomatic bone metastases, no known visceral metastatic disease (ALSYMPCA)" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Nausea / vomiting", "Peripheral oedema", "Bone pain (may flare)", "Anaemia", "Thrombocytopenia / neutropenia"],
+    serious: ["Myelosuppression (thrombocytopenia, neutropenia)", "Increased fractures and deaths when combined with abiraterone + prednisolone (avoid — ERA-223)", "Secondary myeloid malignancy (rare)"]
+  },
+  doseModLabel: "Dose modification & safety",
+  doseReductions: { other: [
+    { label: "Haematologic", text: "check ANC + platelets before each dose; withhold for ANC < 1.0 or platelets < 50 until recovery; discontinue if no recovery within ~6-8 weeks." },
+    { label: "Do not combine", text: "avoid concurrent abiraterone + prednisolone/prednisone (excess fractures and deaths in ERA-223)." },
+    { label: "Radiation safety", text: "predominantly faecal excretion; standard handling of body fluids; no special isolation required." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MSV/MSHL) · HSA register (Xofigo) · FDA label (DailyMed). ALSYMPCA",
+  verified: "2026-07-01"
+},
+
+{
+  id: "lutetium-dotatate",
+  name: "Lutetium (177Lu) oxodotreotide",
+  aliases: ["Lutathera", "177Lu-DOTATATE", "177Lu-DOTA-TATE"],
+  class: "Radiopharmaceutical",
+  subclass: "beta-emitter PRRT (SSTR-targeted)",
+  route: ["IV"],
+  atc: "V10XX04",
+  brands: ["Lutathera"],
+  tumours: ["Neuroendocrine"],
+  mechanism: "Peptide-receptor radionuclide therapy (PRRT) — 177Lu-labelled somatostatin analogue binds SSTR2 on tumour cells and delivers targeted beta radiation.",
+  dosing: "7.4 GBq (200 mCi) by IV infusion every 8 weeks, for 4 doses, with a co-infused amino-acid solution (renal protection) + antiemetic prophylaxis.",
+  cdl: { items: [
+    { cancer: "Neuroendocrine — SSTR+ GEP-NET", status: "MSV/MSHL", text: "unresectable/metastatic, progressive, well-differentiated (G1/G2), somatostatin-receptor-positive; foregut, midgut or hindgut (NETTER-1)" }
+  ] },
+  toxicities: {
+    common: ["Nausea / vomiting (largely from the amino-acid infusion)", "Fatigue", "Lymphopenia", "Thrombocytopenia / anaemia", "Abdominal pain", "Decreased appetite"],
+    serious: ["Myelosuppression", "Secondary myeloid neoplasm (MDS / acute leukaemia)", "Renal toxicity (mitigated by amino-acid co-infusion)", "Hepatotoxicity", "Neuroendocrine hormonal crisis"]
+  },
+  doseModLabel: "Dose modification & safety",
+  doseReductions: { other: [
+    { label: "Renal protection", text: "co-infuse amino-acid (lysine/arginine) solution; monitor renal function; dose reduction to 3.7 GBq for defined toxicities." },
+    { label: "Haematologic / hepatic", text: "monitor FBC + LFTs; withhold / reduce / discontinue per grade of cytopenia or hepatotoxicity." },
+    { label: "Hormonal crisis", text: "watch for carcinoid crisis in functional tumours; supportive somatostatin-analogue cover." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MSV/MSHL) · HSA register (Lutathera) · FDA label (DailyMed). NETTER-1",
+  verified: "2026-07-01"
+},
+
+{
+  id: "lutetium-psma",
+  name: "Lutetium (177Lu) vipivotide tetraxetan",
+  aliases: ["Pluvicto", "177Lu-PSMA-617"],
+  class: "Radiopharmaceutical",
+  subclass: "beta-emitter (PSMA-targeted)",
+  route: ["IV"],
+  atc: "V10XX05",
+  brands: ["Pluvicto"],
+  tumours: ["Prostate"],
+  mechanism: "177Lu-labelled PSMA-directed ligand — binds prostate-specific membrane antigen on tumour cells and delivers targeted beta radiation. Requires PSMA-PET-positive selection.",
+  dosing: "7.4 GBq (200 mCi) by IV infusion every 6 weeks, for up to 6 doses.",
+  cdl: { items: [
+    { cancer: "Prostate — PSMA+ mCRPC", status: "MSV/MSHL", text: "metastatic castration-resistant, previously treated with a docetaxel-containing regimen (VISION); PSMA-PET positive" }
+  ] },
+  toxicities: {
+    common: ["Fatigue", "Dry mouth / xerostomia (salivary PSMA uptake)", "Nausea", "Anaemia", "Thrombocytopenia", "Decreased appetite"],
+    serious: ["Myelosuppression", "Renal toxicity", "Secondary myeloid malignancy (rare)", "Dehydration / electrolyte disturbance"]
+  },
+  doseModLabel: "Dose modification & safety",
+  doseReductions: { other: [
+    { label: "Haematologic / renal", text: "monitor FBC + renal function; withhold / reduce (to 5.6 GBq) / discontinue per toxicity; maintain hydration." },
+    { label: "Radiation safety", text: "renal excretion; counsel on fluid/toileting precautions to limit household radiation exposure." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MSV/MSHL) · HSA register (Pluvicto) · FDA label (DailyMed). VISION",
+  verified: "2026-07-01"
 }
 
 ];
