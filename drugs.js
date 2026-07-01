@@ -2929,6 +2929,162 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026, MAF ×2) · HSA register (Nubeqa) · FDA label (DailyMed). ARAMIS, ARASENS",
   verified: "2026-07-01"
+},
+
+{
+  id: "denosumab",
+  name: "Denosumab",
+  aliases: ["Xgeva", "Prolia"],
+  class: "Bone-targeted agent",
+  subclass: "RANKL inhibitor (monoclonal antibody)",
+  route: ["SC"],
+  atc: "M05BX04",
+  brands: ["Xgeva", "Prolia"],
+  tumours: ["Supportive care"],
+  mechanism: "Fully human monoclonal antibody against RANKL — inhibits osteoclast formation and bone resorption. Xgeva = oncology (120 mg); Prolia = bone loss / osteoporosis (60 mg).",
+  indications: [
+    { indication: "Bone metastases — prevention of skeletal-related events (solid tumours)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks (+ calcium/vitamin D)" },
+    { indication: "Giant cell tumour of bone (unresectable)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15 of cycle 1" },
+    { indication: "Hypercalcaemia of malignancy (bisphosphonate-refractory)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15" },
+    { indication: "Cancer treatment-induced bone loss (AI / ADT)", hsa: "y", fda: "y", dose: "Prolia 60 mg SC every 6 months (+ calcium/vitamin D)" }
+  ],
+  cdl: { items: [
+    { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
+  ] },
+  toxicities: {
+    common: ["Hypocalcaemia", "Fatigue / asthenia", "Nausea", "Diarrhoea", "Arthralgia", "Hypophosphataemia"],
+    serious: ["Osteonecrosis of the jaw", "Atypical femoral fracture", "Severe hypocalcaemia (higher risk in renal impairment)", "Rebound multiple vertebral fractures if Prolia stopped without follow-on antiresorptive"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Hypocalcaemia", text: "correct pre-existing hypocalcaemia before starting; supplement calcium + vitamin D; higher risk with renal impairment (no renal dose adjustment, but monitor closely)." },
+    { label: "Jaw (ONJ)", text: "dental exam + preventive dentistry before starting; avoid invasive dental procedures during treatment." },
+    { label: "Discontinuation (Prolia)", text: "do not delay/stop without transitioning to another antiresorptive — rebound vertebral-fracture risk." }
+  ] },
+  sources: "Not on MOH Cancer Drug List (supportive agent) · HSA register (Xgeva / Prolia) · FDA label (DailyMed). Freedom (bone loss), giant-cell-tumour studies",
+  verified: "2026-07-01"
+},
+
+{
+  id: "zoledronic-acid",
+  name: "Zoledronic acid",
+  aliases: ["Zometa", "Aclasta", "Reclast"],
+  class: "Bisphosphonate",
+  subclass: "nitrogen-containing (IV)",
+  route: ["IV"],
+  atc: "M05BA08",
+  brands: ["Zometa"],
+  tumours: ["Supportive care"],
+  mechanism: "Nitrogen-containing bisphosphonate — inhibits osteoclast-mediated bone resorption (farnesyl pyrophosphate synthase). Zometa = oncology; Aclasta = osteoporosis.",
+  indications: [
+    { indication: "Bone metastases — prevention of skeletal-related events", hsa: "y", fda: "y", dose: "Zometa 4 mg IV over ≥15 min every 3-4 weeks (+ calcium/vitamin D)" },
+    { indication: "Hypercalcaemia of malignancy", hsa: "y", fda: "y", dose: "Zometa 4 mg IV single dose (may repeat after ≥7 days if needed)" }
+  ],
+  cdl: { items: [
+    { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
+  ] },
+  toxicities: {
+    common: ["Acute-phase reaction (flu-like symptoms, first infusion)", "Hypocalcaemia / hypophosphataemia", "Fatigue", "Arthralgia / myalgia", "Nausea"],
+    serious: ["Renal impairment / acute kidney injury", "Osteonecrosis of the jaw", "Atypical femoral fracture", "Severe hypocalcaemia"]
+  },
+  doseModLabel: "Monitoring & dose modification",
+  doseReductions: { other: [
+    { label: "Renal (bone-mets dosing)", text: "reduce dose by creatinine clearance (CrCl 50-60: 3.5 mg; 40-49: 3.3 mg; 30-39: 3 mg); avoid if CrCl < 30; withhold for renal deterioration until recovery." },
+    { label: "Hypocalcaemia", text: "correct calcium/vitamin D before and during; check calcium, phosphate, magnesium, creatinine." },
+    { label: "Jaw (ONJ)", text: "dental assessment before starting; avoid invasive dental procedures on treatment." }
+  ] },
+  sources: "Not on MOH Cancer Drug List (supportive agent) · HSA register (Zometa) · FDA label (DailyMed)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "pamidronate",
+  name: "Pamidronate",
+  aliases: ["Aredia"],
+  class: "Bisphosphonate",
+  subclass: "nitrogen-containing (IV)",
+  route: ["IV"],
+  atc: "M05BA03",
+  brands: ["Aredia"],
+  tumours: ["Supportive care"],
+  mechanism: "Nitrogen-containing bisphosphonate — inhibits osteoclastic bone resorption. Largely superseded by zoledronic acid (longer infusion, less potent) but still used.",
+  indications: [
+    { indication: "Osteolytic bone metastases (breast) / myeloma bone disease", hsa: "y", fda: "y", dose: "90 mg IV over 2-4 h every 3-4 weeks" },
+    { indication: "Hypercalcaemia of malignancy", hsa: "y", fda: "y", dose: "60-90 mg IV over 2-24 h, single dose (by calcium level)" }
+  ],
+  cdl: { items: [
+    { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
+  ] },
+  toxicities: {
+    common: ["Acute-phase reaction (fever, myalgia)", "Hypocalcaemia / hypophosphataemia / hypomagnesaemia", "Injection-site reactions", "Fatigue", "Nausea"],
+    serious: ["Renal impairment (avoid rapid infusion)", "Osteonecrosis of the jaw", "Atypical femoral fracture", "Severe electrolyte disturbance"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Renal / infusion", text: "infuse slowly (never as a bolus); caution + monitor renal function in impairment; correct calcium/vitamin D." },
+    { label: "Jaw (ONJ)", text: "dental assessment before starting; avoid invasive dental procedures on treatment." }
+  ] },
+  sources: "Not on MOH Cancer Drug List (supportive agent) · HSA register (Aredia) · FDA label (DailyMed)",
+  verified: "2026-07-01"
+},
+
+{
+  id: "octreotide",
+  name: "Octreotide",
+  aliases: ["Sandostatin", "Sandostatin LAR"],
+  class: "Somatostatin analogue",
+  subclass: "SSTR2/5 agonist",
+  route: ["SC", "IM"],
+  atc: "H01CB02",
+  brands: ["Sandostatin", "Sandostatin LAR"],
+  tumours: ["Neuroendocrine"],
+  mechanism: "Synthetic somatostatin analogue — binds somatostatin receptors (mainly SSTR2/5), suppressing hormone secretion and giving an antiproliferative effect in well-differentiated NET.",
+  indications: [
+    { indication: "Carcinoid syndrome / functioning NET — symptom control", hsa: "y", fda: "y", dose: "Immediate-release 50-100 mcg SC 2-3×/day, titrate; then LAR 20-30 mg IM every 4 weeks" },
+    { indication: "Advanced midgut NET — antiproliferative", hsa: "y", fda: "y", dose: "LAR 30 mg IM every 4 weeks (PROMID)" },
+    { indication: "VIPoma / glucagonoma — symptom control", hsa: "y", fda: "y", dose: "50-100 mcg SC 2-3×/day, then LAR depot" }
+  ],
+  cdl: { class: "SDL", wording: "For cancer treatment" },
+  toxicities: {
+    common: ["Injection-site reactions", "Diarrhoea / steatorrhoea", "Abdominal cramps, flatulence", "Nausea", "Glucose dysregulation (hyper- or hypo-glycaemia)"],
+    serious: ["Cholelithiasis / biliary sludge (long-term)", "Bradycardia / conduction changes", "Hypothyroidism (long-term)", "Rebound symptoms on abrupt withdrawal"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Biliary", text: "periodic gallbladder ultrasound on long-term therapy (gallstone risk)." },
+    { label: "Glucose / thyroid", text: "monitor glucose (adjust antidiabetics) and TSH periodically." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · HSA register (Sandostatin) · FDA label (DailyMed). PROMID",
+  verified: "2026-07-01"
+},
+
+{
+  id: "lanreotide",
+  name: "Lanreotide",
+  aliases: ["Somatuline Autogel", "Somatuline Depot"],
+  class: "Somatostatin analogue",
+  subclass: "SSTR2/5 agonist",
+  route: ["SC"],
+  atc: "H01CB03",
+  brands: ["Somatuline Autogel"],
+  tumours: ["Neuroendocrine"],
+  mechanism: "Long-acting somatostatin analogue — SSTR2/5 agonist with antiproliferative activity in well-differentiated GEP-NET.",
+  dosing: "90-120 mg by deep SC injection every 4 weeks.",
+  cdl: { items: [
+    { cancer: "Neuroendocrine — GEP-NET (antiproliferative)", status: "MAF", text: "gastrointestinal or pancreatic origin, well-differentiated (CLARINET)" },
+    { cancer: "Neuroendocrine — carcinoid syndrome (symptom control)", status: "MAF", text: "reduction of carcinoid-syndrome symptoms" }
+  ] },
+  toxicities: {
+    common: ["Injection-site reactions", "Diarrhoea / loose stools", "Abdominal pain", "Nausea", "Glucose dysregulation"],
+    serious: ["Cholelithiasis / biliary sludge (long-term)", "Bradycardia", "Hypothyroidism (long-term)"]
+  },
+  doseModLabel: "Monitoring & supportive care",
+  doseReductions: { other: [
+    { label: "Biliary", text: "periodic gallbladder ultrasound on long-term therapy." },
+    { label: "Glucose / thyroid", text: "monitor glucose and TSH periodically." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MAF; acromegaly rows excluded as non-oncology) · HSA register (Somatuline Autogel) · FDA label (DailyMed). CLARINET",
+  verified: "2026-07-01"
 }
 
 ];
