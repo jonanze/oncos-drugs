@@ -106,11 +106,9 @@
   table.ind th{font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:.03em;
     color:var(--muted); font-weight:600; text-align:left; padding:4px 5px; border-bottom:1px solid var(--line);}
   table.ind th.c{text-align:center;}
-  table.ind th.hsa{color:var(--accent);}
   table.ind td{padding:6px 5px; border-bottom:1px solid #eef1f5; vertical-align:top;}
   table.ind tr:last-child td{border-bottom:none;}
-  table.ind td.c{text-align:center; font-weight:600;}
-  .yes{color:var(--ok);} .no{color:var(--na);}
+  .offlabel{color:var(--na); font-size:10px; font-style:italic; white-space:nowrap;}
   .indleg{font-size:10px; color:var(--na); margin-top:6px;}
 
   .cdl{display:flex; align-items:baseline; gap:9px;}
@@ -263,21 +261,21 @@
     return true;
   }
 
-  const mark = v => v === 'y'
-    ? '<span class="yes">✓</span>'
-    : '<span class="no">–</span>';
-
   function indTable(inds){
-    const rows = inds.map(i => `<tr>
-      <td>${esc(i.indication)}</td>
-      <td class="c">${mark(i.hsa)}</td>
-      <td class="c">${mark(i.fda)}</td>
-      <td>${esc(i.dose)}</td></tr>`).join('');
+    const rows = inds.map(i => {
+      const off = i.hsa === 'n' ? ' <span class="offlabel">(not HSA-approved)</span>' : '';
+      return `<tr>
+      <td>${esc(i.indication)}${off}</td>
+      <td>${esc(i.dose)}</td></tr>`;
+    }).join('');
+    const hasOff = inds.some(i => i.hsa === 'n');
+    const leg = hasOff
+      ? `<div class="indleg">Indications are HSA-approved unless tagged <span class="offlabel">(not HSA-approved)</span> — approved elsewhere / used off-label locally.</div>`
+      : '';
     return `<table class="ind">
-      <colgroup><col style="width:36%"><col style="width:11%"><col style="width:11%"><col style="width:42%"></colgroup>
-      <tr><th>Indication</th><th class="c hsa">HSA</th><th class="c">FDA</th><th>Dose</th></tr>
-      ${rows}</table>
-      <div class="indleg">✓ on label · – not on that regulator's label. Approval status only — not a statement on clinical use.</div>`;
+      <colgroup><col style="width:54%"><col style="width:46%"></colgroup>
+      <tr><th>Indication</th><th>Dose</th></tr>
+      ${rows}</table>${leg}`;
   }
 
   function drTable(dr){
@@ -304,11 +302,11 @@
     ].join('');
 
     const boxed = d.boxedWarning ? `<div class="boxwarn">
-      <div class="bwl">⚠ FDA boxed warning</div>
+      <div class="bwl">⚠ Boxed warning</div>
       <div class="bwt">${esc(d.boxedWarning)}</div></div>` : '';
 
     const inds = (d.indications && d.indications.length) ? `<div class="sec">
-      <h3>Indications · approval · dose</h3>${indTable(d.indications)}</div>` : '';
+      <h3>Indications · dose</h3>${indTable(d.indications)}</div>` : '';
 
     const dosing = d.dosing ? `<div class="sec"><h3>Dosing</h3><div class="kv">${esc(d.dosing)}</div></div>` : '';
 

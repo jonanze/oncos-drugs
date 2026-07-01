@@ -23,10 +23,13 @@
  *   brands        [..] registered brand names (shown in header)
  *   tumours       [..] tumour types for the filter chip (derive from indications)
  *   mechanism     one-line mechanism of action
- *   boxedWarning  string — FDA boxed warning (omit if none)
- *   indications   [{ indication, hsa, fda, dose }]
- *                   hsa/fda: "y" = on label, "n" = not on label
- *                   (EMA column removed 2026-06-29; any legacy `ema` key is ignored)
+ *   boxedWarning  string — boxed safety warning (omit if none)
+ *   indications   [{ indication, hsa, dose }]
+ *                   Rendered as "Indication · Dose". Scope = HSA-approved, so an
+ *                   indication is HSA-approved by inclusion; a row with hsa: "n"
+ *                   is tagged "(not HSA-approved)" (approved abroad / used off-label).
+ *                   Default hsa "y" (may be omitted). FDA/EMA approval columns removed
+ *                   2026-07-01 — the reference is HSA-focused (Jonan).
  *   cdl           { class: "SDL"|"MAF"|"Not listed", wording: "<verbatim CDL text>" }
  *                   for indication-specific CDL (e.g. MAF drugs) use instead:
  *                   { class, limit?: "<MSHL limit>", items: [{ cancer, text }] }
@@ -52,10 +55,10 @@ window.DRUGS = [
   mechanism: "Oral 5-FU prodrug — activated by thymidine phosphorylase, inhibits thymidylate synthase.",
   boxedWarning: "Coumarin anticoagulant interaction (warfarin, phenprocoumon): monitor INR/PT frequently. Altered coagulation and bleeding, including death, reported — onset days to months after starting, up to 1 month after stopping. Higher risk if age >60 or cancer.",
   indications: [
-    { indication: "Colon, adjuvant",            hsa: "y", fda: "y", dose: "1250 mg/m² BID, D1–14 q3w × 8 (6 mo)" },
-    { indication: "Colorectal, metastatic",      hsa: "y", fda: "y", dose: "1250 mg/m² BID, D1–14 q3w" },
-    { indication: "Gastric, advanced",           hsa: "y", fda: "n", dose: "1000 mg/m² BID, D1–14 q3w (+ platinum)" },
-    { indication: "Breast, advanced/metastatic", hsa: "y", fda: "y", dose: "1250 mg/m² BID, D1–14 q3w — monotherapy, or + docetaxel 75 mg/m² q3w" }
+    { indication: "Colon, adjuvant",            hsa: "y", dose: "1250 mg/m² BID, D1–14 q3w × 8 (6 mo)" },
+    { indication: "Colorectal, metastatic",      hsa: "y", dose: "1250 mg/m² BID, D1–14 q3w" },
+    { indication: "Gastric, advanced",           hsa: "y", dose: "1000 mg/m² BID, D1–14 q3w (+ platinum)" },
+    { indication: "Breast, advanced/metastatic", hsa: "y", dose: "1250 mg/m² BID, D1–14 q3w — monotherapy, or + docetaxel 75 mg/m² q3w" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -96,9 +99,9 @@ window.DRUGS = [
   mechanism: "Platinum agent — forms DNA crosslinks; less nephro-, oto- and neurotoxic but more myelosuppressive than cisplatin.",
   boxedWarning: "Bone-marrow suppression — dose-related, may be severe (infection and/or bleeding). Anaphylactic-like reactions within minutes of administration. Administer under the supervision of a physician experienced with cancer chemotherapy.",
   indications: [
-    { indication: "Ovarian, advanced (epithelial)", hsa: "y", fda: "y", dose: "Calvert AUC 5–6 q3–4w (AUC 4–6 if recurrent / single agent)" },
-    { indication: "Lung — small cell",              hsa: "y", fda: "n", dose: "Calvert AUC 5–6 q3w" },
-    { indication: "Head & neck",                    hsa: "y", fda: "n", dose: "Calvert AUC 5–6 q3w (regimen-dependent)" }
+    { indication: "Ovarian, advanced (epithelial)", hsa: "y", dose: "Calvert AUC 5–6 q3–4w (AUC 4–6 if recurrent / single agent)" },
+    { indication: "Lung — small cell",              hsa: "y", dose: "Calvert AUC 5–6 q3w" },
+    { indication: "Head & neck",                    hsa: "y", dose: "Calvert AUC 5–6 q3w (regimen-dependent)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -134,10 +137,10 @@ window.DRUGS = [
   mechanism: "Platinum agent — forms intrastrand DNA crosslinks, blocking replication and transcription.",
   boxedWarning: "Nephrotoxicity — severe, including acute renal failure; ensure adequate hydration. Dose-related peripheral neuropathy. Severe nausea and vomiting — premedicate with antiemetics. Myelosuppression — severe, with fatal infections. Cumulative ototoxicity.",
   indications: [
-    { indication: "Testicular (germ cell), metastatic", hsa: "y", fda: "y", dose: "20 mg/m² daily × 5, per cycle" },
-    { indication: "Ovarian, advanced",                  hsa: "y", fda: "y", dose: "75–100 mg/m² q3–4w" },
-    { indication: "Bladder, advanced",                  hsa: "y", fda: "y", dose: "50–70 mg/m² q3–4w" },
-    { indication: "Head & neck, squamous cell",         hsa: "y", fda: "n", dose: "100 mg/m² q3w (e.g. concurrent chemoRT)" }
+    { indication: "Testicular (germ cell), metastatic", hsa: "y", dose: "20 mg/m² daily × 5, per cycle" },
+    { indication: "Ovarian, advanced",                  hsa: "y", dose: "75–100 mg/m² q3–4w" },
+    { indication: "Bladder, advanced",                  hsa: "y", dose: "50–70 mg/m² q3–4w" },
+    { indication: "Head & neck, squamous cell",         hsa: "y", dose: "100 mg/m² q3w (e.g. concurrent chemoRT)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -173,8 +176,8 @@ window.DRUGS = [
   mechanism: "Platinum agent — forms DNA crosslinks; partners with infusional 5-FU / leucovorin (FOLFOX).",
   boxedWarning: "Anaphylaxis and serious hypersensitivity reactions — can occur within minutes of administration, during any cycle, and may be fatal. Administer under supervision with emergency treatment available.",
   indications: [
-    { indication: "Colon, adjuvant",      hsa: "y", fda: "y", dose: "85 mg/m² D1 q2w × 12 (+ infusional 5-FU/LV)" },
-    { indication: "Colorectal, advanced", hsa: "y", fda: "y", dose: "85 mg/m² D1 q2w (+ infusional 5-FU/LV)" }
+    { indication: "Colon, adjuvant",      hsa: "y", dose: "85 mg/m² D1 q2w × 12 (+ infusional 5-FU/LV)" },
+    { indication: "Colorectal, advanced", hsa: "y", dose: "85 mg/m² D1 q2w (+ infusional 5-FU/LV)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -209,10 +212,10 @@ window.DRUGS = [
   mechanism: "Fluoropyrimidine — metabolites inhibit thymidylate synthase and incorporate into RNA/DNA.",
   boxedWarning: "DPD deficiency — patients with complete dihydropyrimidine dehydrogenase deficiency are at high risk of serious or fatal toxicity (mucositis, diarrhoea, neutropenia, neurotoxicity). Test for DPYD variants before starting; avoid in complete DPD deficiency. (FDA, 2024.)",
   indications: [
-    { indication: "Colorectal", hsa: "y", fda: "y", dose: "Regimen-based — e.g. 400 mg/m² bolus + 2400 mg/m² over 46 h q2w (FOLFOX/FOLFIRI)" },
-    { indication: "Breast",     hsa: "y", fda: "y", dose: "Regimen-based (e.g. CMF/FEC)" },
-    { indication: "Gastric",    hsa: "y", fda: "y", dose: "Regimen-based (e.g. FLOT, ECF/EOX)" },
-    { indication: "Pancreatic", hsa: "y", fda: "y", dose: "400 mg/m² bolus + 2400 mg/m² over 46 h (FOLFIRINOX)" }
+    { indication: "Colorectal", hsa: "y", dose: "Regimen-based — e.g. 400 mg/m² bolus + 2400 mg/m² over 46 h q2w (FOLFOX/FOLFIRI)" },
+    { indication: "Breast",     hsa: "y", dose: "Regimen-based (e.g. CMF/FEC)" },
+    { indication: "Gastric",    hsa: "y", dose: "Regimen-based (e.g. FLOT, ECF/EOX)" },
+    { indication: "Pancreatic", hsa: "y", dose: "400 mg/m² bolus + 2400 mg/m² over 46 h (FOLFIRINOX)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -248,11 +251,11 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC", "Pancreatic", "Bladder", "Breast", "Ovarian"],
   mechanism: "Pyrimidine nucleoside analogue — incorporates into DNA (masked chain termination); inhibits ribonucleotide reductase.",
   indications: [
-    { indication: "Lung — non-small cell", hsa: "y", fda: "y", dose: "1000–1250 mg/m² D1,8 (±15) — + cisplatin 1L, or monotherapy" },
-    { indication: "Pancreatic",            hsa: "y", fda: "y", dose: "1000 mg/m² weekly × 7, then D1,8,15 q4w" },
-    { indication: "Bladder, advanced",     hsa: "y", fda: "n", dose: "1000 mg/m² D1,8,15 q4w (+ cisplatin)" },
-    { indication: "Breast",                hsa: "y", fda: "y", dose: "1250 mg/m² D1,8 q3w (+ paclitaxel)" },
-    { indication: "Ovarian, relapsed",     hsa: "n", fda: "y", dose: "1000 mg/m² D1,8 q3w (+ carboplatin)" }
+    { indication: "Lung — non-small cell", hsa: "y", dose: "1000–1250 mg/m² D1,8 (±15) — + cisplatin 1L, or monotherapy" },
+    { indication: "Pancreatic",            hsa: "y", dose: "1000 mg/m² weekly × 7, then D1,8,15 q4w" },
+    { indication: "Bladder, advanced",     hsa: "y", dose: "1000 mg/m² D1,8,15 q4w (+ cisplatin)" },
+    { indication: "Breast",                hsa: "y", dose: "1250 mg/m² D1,8 q3w (+ paclitaxel)" },
+    { indication: "Ovarian, relapsed",     hsa: "n", dose: "1000 mg/m² D1,8 q3w (+ carboplatin)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -288,12 +291,12 @@ window.DRUGS = [
   mechanism: "Antifolate — inhibits dihydrofolate reductase, blocking tetrahydrofolate and purine/thymidylate synthesis.",
   boxedWarning: "Multiple — embryo-fetal toxicity / death (avoid in pregnancy); hepatotoxicity (fibrosis/cirrhosis with chronic use); renal impairment increases toxicity (renally cleared); severe myelosuppression (↑ with NSAIDs); interstitial pneumonitis (any dose, may be fatal); severe diarrhoea / mucositis (can be fatal); serious skin reactions (SJS/TEN); opportunistic infections; tumour lysis. Use preservative-free formulation for intrathecal / high-dose.",
   indications: [
-    { indication: "Gestational trophoblastic neoplasia", hsa: "y", fda: "y", dose: "15–30 mg/day PO/IM × 5, repeat after ≥1 wk" },
-    { indication: "Lymphoma (CNS / Burkitt)",            hsa: "y", fda: "y", dose: "High-dose IV + leucovorin rescue (protocol-dependent)" },
-    { indication: "Breast",                              hsa: "y", fda: "y", dose: "Regimen-based (e.g. CMF)" },
-    { indication: "Head & neck",                         hsa: "y", fda: "y", dose: "Regimen-based / palliative" },
-    { indication: "Osteosarcoma",                        hsa: "y", fda: "y", dose: "High-dose 12 g/m² IV + leucovorin rescue" },
-    { indication: "Mycosis fungoides (CTCL)",            hsa: "y", fda: "y", dose: "5–50 mg weekly" }
+    { indication: "Gestational trophoblastic neoplasia", hsa: "y", dose: "15–30 mg/day PO/IM × 5, repeat after ≥1 wk" },
+    { indication: "Lymphoma (CNS / Burkitt)",            hsa: "y", dose: "High-dose IV + leucovorin rescue (protocol-dependent)" },
+    { indication: "Breast",                              hsa: "y", dose: "Regimen-based (e.g. CMF)" },
+    { indication: "Head & neck",                         hsa: "y", dose: "Regimen-based / palliative" },
+    { indication: "Osteosarcoma",                        hsa: "y", dose: "High-dose 12 g/m² IV + leucovorin rescue" },
+    { indication: "Mycosis fungoides (CTCL)",            hsa: "y", dose: "5–50 mg weekly" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -330,8 +333,8 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC", "Mesothelioma"],
   mechanism: "Multitargeted antifolate — inhibits thymidylate synthase, DHFR and GARFT. Needs folate/B12 supplementation.",
   indications: [
-    { indication: "Lung — non-small cell (non-squamous)", hsa: "y", fda: "y", dose: "500 mg/m² q3w — 1L + cisplatin, maintenance, or 2L mono" },
-    { indication: "Pleural mesothelioma",                 hsa: "y", fda: "y", dose: "500 mg/m² q3w + cisplatin" }
+    { indication: "Lung — non-small cell (non-squamous)", hsa: "y", dose: "500 mg/m² q3w — 1L + cisplatin, maintenance, or 2L mono" },
+    { indication: "Pleural mesothelioma",                 hsa: "y", dose: "500 mg/m² q3w + cisplatin" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -368,10 +371,10 @@ window.DRUGS = [
   mechanism: "Taxane — stabilises microtubules, arresting mitosis. Cremophor EL solvent drives hypersensitivity → premedication required.",
   boxedWarning: "Severe hypersensitivity / anaphylaxis (2–4%, fatal despite premedication) — premedicate with corticosteroid + antihistamine + H2 antagonist. Severe bone-marrow suppression — do not start if baseline neutrophils <1500 cells/mm³.",
   indications: [
-    { indication: "Ovarian",                       hsa: "y", fda: "y", dose: "175 mg/m² over 3 h q3w (± carboplatin)" },
-    { indication: "Breast",                        hsa: "y", fda: "y", dose: "175 mg/m² q3w or weekly 80 mg/m²; adjuvant after AC; + trastuzumab if HER2+" },
-    { indication: "Lung — non-small cell",         hsa: "y", fda: "y", dose: "175–200 mg/m² q3w (+ platinum) or weekly" },
-    { indication: "Kaposi sarcoma (AIDS-related)", hsa: "n", fda: "y", dose: "135 mg/m² q3w or 100 mg/m² q2w" }
+    { indication: "Ovarian",                       hsa: "y", dose: "175 mg/m² over 3 h q3w (± carboplatin)" },
+    { indication: "Breast",                        hsa: "y", dose: "175 mg/m² q3w or weekly 80 mg/m²; adjuvant after AC; + trastuzumab if HER2+" },
+    { indication: "Lung — non-small cell",         hsa: "y", dose: "175–200 mg/m² q3w (+ platinum) or weekly" },
+    { indication: "Kaposi sarcoma (AIDS-related)", hsa: "n", dose: "135 mg/m² q3w or 100 mg/m² q2w" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -410,11 +413,11 @@ window.DRUGS = [
   mechanism: "Taxane — stabilises microtubules, arresting mitosis. Dexamethasone premedication reduces fluid retention.",
   boxedWarning: "Toxic deaths — increased with hepatic impairment, higher doses, and in NSCLC after prior platinum. Do NOT give if bilirubin > ULN, or AST/ALT >1.5× ULN with ALP >2.5× ULN. Severe neutropenia — do not start if neutrophils <1500. Severe hypersensitivity (do not rechallenge). Severe fluid retention despite dexamethasone premedication.",
   indications: [
-    { indication: "Breast",                hsa: "y", fda: "y", dose: "60–100 mg/m² q3w; adjuvant (TAC); + trastuzumab if HER2+" },
-    { indication: "Lung — non-small cell", hsa: "y", fda: "y", dose: "75 mg/m² q3w (post-platinum, or + cisplatin 1L)" },
-    { indication: "Prostate (mCRPC)",      hsa: "y", fda: "y", dose: "75 mg/m² q3w + prednisone" },
-    { indication: "Gastric (incl. GEJ)",   hsa: "y", fda: "y", dose: "75 mg/m² q3w + cisplatin + 5-FU (DCF)" },
-    { indication: "Head & neck",           hsa: "y", fda: "y", dose: "75 mg/m² + cisplatin + 5-FU (TPF induction)" }
+    { indication: "Breast",                hsa: "y", dose: "60–100 mg/m² q3w; adjuvant (TAC); + trastuzumab if HER2+" },
+    { indication: "Lung — non-small cell", hsa: "y", dose: "75 mg/m² q3w (post-platinum, or + cisplatin 1L)" },
+    { indication: "Prostate (mCRPC)",      hsa: "y", dose: "75 mg/m² q3w + prednisone" },
+    { indication: "Gastric (incl. GEJ)",   hsa: "y", dose: "75 mg/m² q3w + cisplatin + 5-FU (DCF)" },
+    { indication: "Head & neck",           hsa: "y", dose: "75 mg/m² + cisplatin + 5-FU (TPF induction)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -453,9 +456,9 @@ window.DRUGS = [
   mechanism: "Albumin-bound paclitaxel — solvent-free, so no Cremophor hypersensitivity and no routine steroid premedication.",
   boxedWarning: "Severe bone-marrow suppression — do not start if baseline neutrophils <1500 cells/mm³; monitor counts. Solvent-free — do not substitute for solvent-based paclitaxel on an mg-for-mg basis.",
   indications: [
-    { indication: "Breast, metastatic",    hsa: "y", fda: "y", dose: "260 mg/m² q3w (after combination chemo failure)" },
-    { indication: "Lung — non-small cell", hsa: "y", fda: "y", dose: "100 mg/m² D1,8,15 q3w + carboplatin (1L, non-surgical)" },
-    { indication: "Pancreatic",            hsa: "y", fda: "y", dose: "125 mg/m² D1,8,15 q4w + gemcitabine (metastatic)" }
+    { indication: "Breast, metastatic",    hsa: "y", dose: "260 mg/m² q3w (after combination chemo failure)" },
+    { indication: "Lung — non-small cell", hsa: "y", dose: "100 mg/m² D1,8,15 q3w + carboplatin (1L, non-surgical)" },
+    { indication: "Pancreatic",            hsa: "y", dose: "125 mg/m² D1,8,15 q4w + gemcitabine (metastatic)" }
   ],
   cdl: { class: "MAF", limit: "MediShield Life $1,200/mth", items: [
     { cancer: "Breast (metastatic)", text: "monotherapy after 1L failure, when anthracycline-containing therapy not indicated" },
@@ -497,15 +500,15 @@ window.DRUGS = [
   mechanism: "Anthracycline — intercalates DNA and inhibits topoisomerase II; free-radical generation drives cumulative cardiotoxicity.",
   boxedWarning: "Cardiomyopathy / CHF — cumulative, dose-related (risk rises above 550 mg/m²; can occur during or years after); monitor LVEF. Secondary AML/MDS. Extravasation — severe tissue necrosis (vesicant); give via free-flowing IV. Severe myelosuppression. Reduce dose in hepatic impairment.",
   indications: [
-    { indication: "Breast",                       hsa: "y", fda: "y", dose: "60 mg/m² (AC); 60–75 mg/m² q3w" },
-    { indication: "Sarcoma (soft tissue & bone)", hsa: "y", fda: "y", dose: "60–75 mg/m² q3w (± ifosfamide)" },
-    { indication: "Hodgkin lymphoma",             hsa: "y", fda: "y", dose: "25 mg/m² D1,15 (ABVD)" },
-    { indication: "Non-Hodgkin lymphoma",         hsa: "y", fda: "y", dose: "50 mg/m² q3w (CHOP)" },
-    { indication: "Ovarian",                      hsa: "y", fda: "y", dose: "60–75 mg/m² q3w" },
-    { indication: "Bladder (transitional cell)",  hsa: "y", fda: "y", dose: "60 mg/m² q3w (MVAC)" },
-    { indication: "Gastric",                      hsa: "y", fda: "y", dose: "Regimen-dependent" },
-    { indication: "Lung — small cell",            hsa: "y", fda: "y", dose: "Regimen-dependent" },
-    { indication: "Thyroid",                      hsa: "y", fda: "y", dose: "60 mg/m² q3w" }
+    { indication: "Breast",                       hsa: "y", dose: "60 mg/m² (AC); 60–75 mg/m² q3w" },
+    { indication: "Sarcoma (soft tissue & bone)", hsa: "y", dose: "60–75 mg/m² q3w (± ifosfamide)" },
+    { indication: "Hodgkin lymphoma",             hsa: "y", dose: "25 mg/m² D1,15 (ABVD)" },
+    { indication: "Non-Hodgkin lymphoma",         hsa: "y", dose: "50 mg/m² q3w (CHOP)" },
+    { indication: "Ovarian",                      hsa: "y", dose: "60–75 mg/m² q3w" },
+    { indication: "Bladder (transitional cell)",  hsa: "y", dose: "60 mg/m² q3w (MVAC)" },
+    { indication: "Gastric",                      hsa: "y", dose: "Regimen-dependent" },
+    { indication: "Lung — small cell",            hsa: "y", dose: "Regimen-dependent" },
+    { indication: "Thyroid",                      hsa: "y", dose: "60 mg/m² q3w" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -544,10 +547,10 @@ window.DRUGS = [
   mechanism: "Anthracycline (doxorubicin epimer) — intercalates DNA, inhibits topoisomerase II; less cardiotoxic per mg than doxorubicin (higher cumulative cap).",
   boxedWarning: "Cardiotoxicity / CHF — cumulative, dose-related (risk rises sharply above 900 mg/m²; during or years after). Secondary AML/MDS. Extravasation — severe tissue necrosis (vesicant). Severe myelosuppression. Reduce dose in hepatic impairment.",
   indications: [
-    { indication: "Breast",   hsa: "y", fda: "y", dose: "90–100 mg/m² q3w (FEC/EC); adjuvant node-positive" },
-    { indication: "Gastric",  hsa: "y", fda: "n", dose: "50 mg/m² q3w (ECF/EOX)" },
-    { indication: "Ovarian",  hsa: "y", fda: "n", dose: "Regimen-dependent" },
-    { indication: "Lymphoma", hsa: "y", fda: "n", dose: "Regimen-dependent" }
+    { indication: "Breast",   hsa: "y", dose: "90–100 mg/m² q3w (FEC/EC); adjuvant node-positive" },
+    { indication: "Gastric",  hsa: "y", dose: "50 mg/m² q3w (ECF/EOX)" },
+    { indication: "Ovarian",  hsa: "y", dose: "Regimen-dependent" },
+    { indication: "Lymphoma", hsa: "y", dose: "Regimen-dependent" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -584,11 +587,11 @@ window.DRUGS = [
   tumours: ["Breast", "Ovarian", "Lymphoma"],
   mechanism: "Prodrug alkylating agent — hepatic activation to phosphoramide mustard (crosslinks DNA); the acrolein metabolite causes haemorrhagic cystitis.",
   indications: [
-    { indication: "Breast",                   hsa: "y", fda: "y", dose: "600 mg/m² (AC/TAC); 100 mg/m² PO ×14 (CMF)" },
-    { indication: "Ovarian",                  hsa: "y", fda: "y", dose: "Regimen-dependent (+ platinum)" },
-    { indication: "Hodgkin lymphoma",         hsa: "y", fda: "y", dose: "Regimen-dependent (e.g. BEACOPP)" },
-    { indication: "Non-Hodgkin lymphoma",     hsa: "y", fda: "y", dose: "750 mg/m² q3w (CHOP / R-CHOP)" },
-    { indication: "Mycosis fungoides (CTCL)", hsa: "y", fda: "y", dose: "Regimen-dependent" }
+    { indication: "Breast",                   hsa: "y", dose: "600 mg/m² (AC/TAC); 100 mg/m² PO ×14 (CMF)" },
+    { indication: "Ovarian",                  hsa: "y", dose: "Regimen-dependent (+ platinum)" },
+    { indication: "Hodgkin lymphoma",         hsa: "y", dose: "Regimen-dependent (e.g. BEACOPP)" },
+    { indication: "Non-Hodgkin lymphoma",     hsa: "y", dose: "750 mg/m² q3w (CHOP / R-CHOP)" },
+    { indication: "Mycosis fungoides (CTCL)", hsa: "y", dose: "Regimen-dependent" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -626,10 +629,10 @@ window.DRUGS = [
   mechanism: "Prodrug alkylating agent — hepatic activation; acrolein causes haemorrhagic cystitis, chloroacetaldehyde drives CNS + renal toxicity. Always co-administer mesna.",
   boxedWarning: "Urotoxicity — severe haemorrhagic cystitis; reduce with prophylactic mesna + hydration. CNS toxicity — encephalopathy can be severe and may be fatal. Severe myelosuppression (fatal infections). Nephrotoxicity — can cause renal failure.",
   indications: [
-    { indication: "Testicular (germ cell)",       hsa: "y", fda: "y", dose: "1.2 g/m²/day × 5 (+ mesna), 3rd-line combination" },
-    { indication: "Sarcoma (soft tissue & bone)", hsa: "y", fda: "n", dose: "2–3 g/m²/day × 2–4 (+ mesna); ± doxorubicin" },
-    { indication: "Cervical",                      hsa: "y", fda: "n", dose: "Regimen-dependent (+ mesna)" },
-    { indication: "Lung — non-small cell",         hsa: "y", fda: "n", dose: "Regimen-dependent (+ mesna)" }
+    { indication: "Testicular (germ cell)",       hsa: "y", dose: "1.2 g/m²/day × 5 (+ mesna), 3rd-line combination" },
+    { indication: "Sarcoma (soft tissue & bone)", hsa: "y", dose: "2–3 g/m²/day × 2–4 (+ mesna); ± doxorubicin" },
+    { indication: "Cervical",                      hsa: "y", dose: "Regimen-dependent (+ mesna)" },
+    { indication: "Lung — non-small cell",         hsa: "y", dose: "Regimen-dependent (+ mesna)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -667,7 +670,7 @@ window.DRUGS = [
   mechanism: "Camptothecin — active metabolite SN-38 inhibits topoisomerase I, causing DNA strand breaks. SN-38 is cleared by UGT1A1.",
   boxedWarning: "Diarrhoea — early (cholinergic, during/shortly after infusion; treat with atropine) and late (>24 h, can be life-threatening → dehydration, electrolyte imbalance, sepsis; treat promptly with loperamide). Severe myelosuppression — neutropenia, including febrile/fatal.",
   indications: [
-    { indication: "Colorectal, metastatic", hsa: "y", fda: "y", dose: "180 mg/m² q2w (FOLFIRI); or 350 mg/m² q3w / 125 mg/m² weekly (single agent)" }
+    { indication: "Colorectal, metastatic", hsa: "y", dose: "180 mg/m² q2w (FOLFIRI); or 350 mg/m² q3w / 125 mg/m² weekly (single agent)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -704,9 +707,9 @@ window.DRUGS = [
   tumours: ["Lung — SCLC", "Testicular", "Lymphoma"],
   mechanism: "Podophyllotoxin — inhibits topoisomerase II, causing DNA strand breaks. Associated with balanced 11q23 translocations (secondary AML).",
   indications: [
-    { indication: "Lung — small cell",        hsa: "y", fda: "y", dose: "100 mg/m² D1–3 q3w (+ platinum)" },
-    { indication: "Testicular (refractory)",  hsa: "y", fda: "y", dose: "50–100 mg/m² D1–5 (+ combination)" },
-    { indication: "Lymphoma",                 hsa: "y", fda: "n", dose: "Regimen-dependent (e.g. BEACOPP, EPOCH, ICE)" }
+    { indication: "Lung — small cell",        hsa: "y", dose: "100 mg/m² D1–3 q3w (+ platinum)" },
+    { indication: "Testicular (refractory)",  hsa: "y", dose: "50–100 mg/m² D1–5 (+ combination)" },
+    { indication: "Lymphoma",                 hsa: "y", dose: "Regimen-dependent (e.g. BEACOPP, EPOCH, ICE)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -743,8 +746,8 @@ window.DRUGS = [
   mechanism: "Semi-synthetic vinca alkaloid — binds tubulin, inhibiting microtubule assembly and arresting mitosis.",
   boxedWarning: "Fatal if given intrathecally — for INTRAVENOUS use only (intrathecal vinca alkaloids cause death). Severe myelosuppression — granulocytopenia (dose-limiting), with serious/fatal infection.",
   indications: [
-    { indication: "Lung — non-small cell", hsa: "y", fda: "y", dose: "25–30 mg/m² weekly (single agent or + cisplatin)" },
-    { indication: "Breast, advanced",      hsa: "y", fda: "n", dose: "25–30 mg/m² weekly" }
+    { indication: "Lung — non-small cell", hsa: "y", dose: "25–30 mg/m² weekly (single agent or + cisplatin)" },
+    { indication: "Breast, advanced",      hsa: "y", dose: "25–30 mg/m² weekly" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -780,10 +783,10 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC", "Lung — SCLC", "Hepatocellular", "Biliary tract"],
   mechanism: "Anti–PD-L1 monoclonal antibody — blocks PD-L1 binding to PD-1 and CD80, restoring T-cell antitumour activity. Flat dosing; toxicity managed by withholding/steroids, not dose reduction.",
   indications: [
-    { indication: "Lung — NSCLC (stage III, consolidation)", hsa: "y", fda: "y", dose: "1500 mg q4w × 12 mo, after platinum chemo-RT (PACIFIC)" },
-    { indication: "Lung — small cell (extensive-stage, 1L)", hsa: "y", fda: "y", dose: "1500 mg + platinum/etoposide q3w, then 1500 mg q4w (CASPIAN)" },
-    { indication: "Hepatocellular (1L, unresectable)",       hsa: "y", fda: "y", dose: "1500 mg q4w + single priming dose tremelimumab (STRIDE)" },
-    { indication: "Biliary tract (advanced)",                hsa: "y", fda: "y", dose: "1500 mg q3w + cisplatin/gemcitabine (TOPAZ-1)" }
+    { indication: "Lung — NSCLC (stage III, consolidation)", hsa: "y", dose: "1500 mg q4w × 12 mo, after platinum chemo-RT (PACIFIC)" },
+    { indication: "Lung — small cell (extensive-stage, 1L)", hsa: "y", dose: "1500 mg + platinum/etoposide q3w, then 1500 mg q4w (CASPIAN)" },
+    { indication: "Hepatocellular (1L, unresectable)",       hsa: "y", dose: "1500 mg q4w + single priming dose tremelimumab (STRIDE)" },
+    { indication: "Biliary tract (advanced)",                hsa: "y", dose: "1500 mg q3w + cisplatin/gemcitabine (TOPAZ-1)" }
   ],
   cdl: { items: [
     { cancer: "NSCLC — stage III consolidation", status: "MAF", limit: "$2,000/mth", text: "unresectable, no progression after platinum chemo-RT; max 12 months; retreatment allowed at progression for up to 1 yr if stopped for other reasons" },
@@ -1179,8 +1182,8 @@ window.DRUGS = [
   mechanism: "HER2-directed ADC — trastuzumab linked to DM1 (microtubule inhibitor); delivers payload into HER2+ cells. Do not substitute for/with trastuzumab.",
   boxedWarning: "Hepatotoxicity (including fatal liver failure / nodular regenerative hyperplasia). Cardiotoxicity — LVEF decline. Embryo-fetal toxicity.",
   indications: [
-    { indication: "Breast — HER2+ adjuvant (residual disease)", hsa: "y", fda: "y", dose: "3.6 mg/kg q3w ×14 (post-neoadjuvant residual, KATHERINE)" },
-    { indication: "Breast — HER2+ advanced (2L)", hsa: "y", fda: "y", dose: "3.6 mg/kg q3w (post-trastuzumab + chemo, EMILIA)" }
+    { indication: "Breast — HER2+ adjuvant (residual disease)", hsa: "y", dose: "3.6 mg/kg q3w ×14 (post-neoadjuvant residual, KATHERINE)" },
+    { indication: "Breast — HER2+ advanced (2L)", hsa: "y", dose: "3.6 mg/kg q3w (post-trastuzumab + chemo, EMILIA)" }
   ],
   cdl: { items: [
     { cancer: "Breast — HER2+ adjuvant", status: "MSV/MSHL", text: "residual invasive disease after neoadjuvant trastuzumab + taxane; max 14 cycles" },
@@ -1214,9 +1217,9 @@ window.DRUGS = [
   mechanism: "HER2-directed ADC — trastuzumab linked to a topoisomerase-I inhibitor (deruxtecan); high drug-to-antibody ratio + bystander effect (active in HER2-low).",
   boxedWarning: "Interstitial lung disease / pneumonitis — can be severe, life-threatening or fatal; monitor and interrupt/treat promptly. Embryo-fetal toxicity.",
   indications: [
-    { indication: "Breast — HER2+ advanced (2L+)", hsa: "y", fda: "y", dose: "5.4 mg/kg q3w (post anti-HER2, DESTINY-Breast03)" },
-    { indication: "Breast — HER2-low advanced", hsa: "y", fda: "y", dose: "5.4 mg/kg q3w (≥1 prior chemo; HR+ endocrine-refractory, DESTINY-Breast04)" },
-    { indication: "Gastric / GEJ — HER2+ (≥3L)", hsa: "y", fda: "y", dose: "6.4 mg/kg q3w (≥2 prior incl. trastuzumab, DESTINY-Gastric01)" }
+    { indication: "Breast — HER2+ advanced (2L+)", hsa: "y", dose: "5.4 mg/kg q3w (post anti-HER2, DESTINY-Breast03)" },
+    { indication: "Breast — HER2-low advanced", hsa: "y", dose: "5.4 mg/kg q3w (≥1 prior chemo; HR+ endocrine-refractory, DESTINY-Breast04)" },
+    { indication: "Gastric / GEJ — HER2+ (≥3L)", hsa: "y", dose: "6.4 mg/kg q3w (≥2 prior incl. trastuzumab, DESTINY-Gastric01)" }
   ],
   cdl: { items: [
     { cancer: "Breast — HER2+ advanced", status: "MSV/MSHL", text: "unresectable/metastatic, after a prior anti-HER2 regimen" },
@@ -1251,8 +1254,8 @@ window.DRUGS = [
   mechanism: "Trop-2-directed ADC — delivers SN-38 (the active metabolite of irinotecan, a topoisomerase-I inhibitor).",
   boxedWarning: "Severe or life-threatening neutropenia. Severe diarrhoea.",
   indications: [
-    { indication: "Breast — TNBC (2L+)", hsa: "y", fda: "y", dose: "10 mg/kg D1,8 q3w (≥2 prior, ≥1 for metastatic; ASCENT)" },
-    { indication: "Breast — HR+/HER2- (post-endocrine)", hsa: "y", fda: "y", dose: "10 mg/kg D1,8 q3w (post-endocrine + ≥2 systemic for mets; TROPiCS-02)" }
+    { indication: "Breast — TNBC (2L+)", hsa: "y", dose: "10 mg/kg D1,8 q3w (≥2 prior, ≥1 for metastatic; ASCENT)" },
+    { indication: "Breast — HR+/HER2- (post-endocrine)", hsa: "y", dose: "10 mg/kg D1,8 q3w (post-endocrine + ≥2 systemic for mets; TROPiCS-02)" }
   ],
   cdl: { items: [
     { cancer: "Breast — TNBC", status: "MSV/MSHL", text: "unresectable LA/metastatic, ≥2 prior systemic (≥1 for metastatic)" },
@@ -1286,7 +1289,7 @@ window.DRUGS = [
   mechanism: "Nectin-4-directed ADC — delivers MMAE (microtubule disruptor) to urothelial carcinoma cells.",
   boxedWarning: "Serious and fatal skin reactions — including Stevens-Johnson syndrome and toxic epidermal necrolysis; monitor closely, withhold/discontinue for severe reactions.",
   indications: [
-    { indication: "Urothelial — advanced (post-IO + platinum)", hsa: "y", fda: "y", dose: "1.25 mg/kg D1,8,15 q4w (EV-301)" }
+    { indication: "Urothelial — advanced (post-IO + platinum)", hsa: "y", dose: "1.25 mg/kg D1,8,15 q4w (EV-301)" }
   ],
   cdl: { items: [
     { cancer: "Urothelial — advanced", status: "MSV/MSHL", text: "LA/metastatic, after a PD-1/PD-L1 inhibitor and platinum chemotherapy" }
@@ -1319,12 +1322,12 @@ window.DRUGS = [
   mechanism: "CD30-directed ADC — delivers MMAE to CD30+ lymphoma cells. Concomitant bleomycin is contraindicated (pulmonary toxicity).",
   boxedWarning: "Progressive multifocal leukoencephalopathy (PML) — JC-virus reactivation; can be fatal.",
   indications: [
-    { indication: "Hodgkin lymphoma — advanced 1L (+ AVD)", hsa: "y", fda: "y", dose: "1.2 mg/kg q2w + AVD (ECHELON-1)" },
-    { indication: "Hodgkin lymphoma — R/R", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w (post-ASCT or ≥2 prior)" },
-    { indication: "Hodgkin lymphoma — post-ASCT consolidation", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w (high-risk, AETHERA)" },
-    { indication: "Peripheral T-cell lymphoma — 1L (+ CHP)", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w + CHP (CD30+, ECHELON-2)" },
-    { indication: "Systemic ALCL — R/R", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w" },
-    { indication: "Cutaneous T-cell lymphoma — CD30+", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w, ≥1 prior, max 16 cyc (ALCANZA)" }
+    { indication: "Hodgkin lymphoma — advanced 1L (+ AVD)", hsa: "y", dose: "1.2 mg/kg q2w + AVD (ECHELON-1)" },
+    { indication: "Hodgkin lymphoma — R/R", hsa: "y", dose: "1.8 mg/kg q3w (post-ASCT or ≥2 prior)" },
+    { indication: "Hodgkin lymphoma — post-ASCT consolidation", hsa: "y", dose: "1.8 mg/kg q3w (high-risk, AETHERA)" },
+    { indication: "Peripheral T-cell lymphoma — 1L (+ CHP)", hsa: "y", dose: "1.8 mg/kg q3w + CHP (CD30+, ECHELON-2)" },
+    { indication: "Systemic ALCL — R/R", hsa: "y", dose: "1.8 mg/kg q3w" },
+    { indication: "Cutaneous T-cell lymphoma — CD30+", hsa: "y", dose: "1.8 mg/kg q3w, ≥1 prior, max 16 cyc (ALCANZA)" }
   ],
   cdl: { items: [
     { cancer: "Hodgkin — 1L advanced (+ AVD, bleomycin-intolerant)", status: "MAF", text: "CD30+ advanced cHL (ECHELON-1)" },
@@ -1362,7 +1365,7 @@ window.DRUGS = [
   tumours: ["Lymphoma"],
   mechanism: "CD79b-directed ADC — delivers MMAE to B-cell lymphoma cells.",
   indications: [
-    { indication: "DLBCL — 1L (+ R-CHP)", hsa: "y", fda: "y", dose: "1.8 mg/kg q3w ×6 + R-CHP (IPI 3-5, POLARIX)" }
+    { indication: "DLBCL — 1L (+ R-CHP)", hsa: "y", dose: "1.8 mg/kg q3w ×6 + R-CHP (IPI 3-5, POLARIX)" }
   ],
   cdl: { items: [
     { cancer: "DLBCL — 1L (+ R-CHP, subsidised rituximab biosimilar)", status: "MAF", text: "previously untreated, IPI 3-5 (POLARIX)" },
@@ -1455,7 +1458,7 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC"],
   mechanism: "1st-generation reversible EGFR TKI.",
   indications: [
-    { indication: "NSCLC — EGFR-mutant (advanced)", hsa: "y", fda: "y", dose: "150 mg PO daily (1L or maintenance)" }
+    { indication: "NSCLC — EGFR-mutant (advanced)", hsa: "y", dose: "150 mg PO daily (1L or maintenance)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1484,7 +1487,7 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC"],
   mechanism: "1st-generation reversible EGFR TKI.",
   indications: [
-    { indication: "NSCLC — 1L EGFR-mutant (advanced)", hsa: "y", fda: "y", dose: "250 mg PO daily (IPASS)" }
+    { indication: "NSCLC — 1L EGFR-mutant (advanced)", hsa: "y", dose: "250 mg PO daily (IPASS)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1513,7 +1516,7 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC"],
   mechanism: "2nd-generation irreversible pan-HER TKI.",
   indications: [
-    { indication: "NSCLC — 1L EGFR ex19del/L858R (advanced)", hsa: "y", fda: "y", dose: "45 mg PO daily (ARCHER-1050)" }
+    { indication: "NSCLC — 1L EGFR ex19del/L858R (advanced)", hsa: "y", dose: "45 mg PO daily (ARCHER-1050)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1625,7 +1628,7 @@ window.DRUGS = [
   tumours: ["Lung — NSCLC"],
   mechanism: "2nd-generation ALK TKI.",
   indications: [
-    { indication: "NSCLC — advanced (ALK+)", hsa: "y", fda: "y", dose: "450 mg PO daily with food (ASCEND)" }
+    { indication: "NSCLC — advanced (ALK+)", hsa: "y", dose: "450 mg PO daily with food (ASCEND)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1906,8 +1909,8 @@ window.DRUGS = [
   boxedWarning: "Severe and fatal hepatotoxicity — monitor liver function; interrupt / reduce / discontinue per transaminase and bilirubin levels.",
   dosing: "800 mg PO once daily on an empty stomach (reduce 800 → 400 → 200 mg).",
   indications: [
-    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "800 mg daily" },
-    { indication: "Soft-tissue sarcoma — advanced (post-chemo)", hsa: "y", fda: "y", dose: "800 mg daily (PALETTE; excludes adipocytic STS / GIST)" }
+    { indication: "Renal cell — advanced", hsa: "y", dose: "800 mg daily" },
+    { indication: "Soft-tissue sarcoma — advanced (post-chemo)", hsa: "y", dose: "800 mg daily (PALETTE; excludes adipocytic STS / GIST)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1936,9 +1939,9 @@ window.DRUGS = [
   boxedWarning: "Severe and fatal hepatotoxicity — monitor liver function; interrupt / discontinue for hepatic failure.",
   dosing: "RCC/GIST: 50 mg daily, 4 weeks on / 2 off. pNET: 37.5 mg continuous. (Adjust by 12.5 mg.)",
   indications: [
-    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "50 mg daily, 4/2 schedule" },
-    { indication: "GIST — post-imatinib", hsa: "y", fda: "y", dose: "50 mg daily, 4/2" },
-    { indication: "Pancreatic NET — advanced", hsa: "y", fda: "y", dose: "37.5 mg continuous" }
+    { indication: "Renal cell — advanced", hsa: "y", dose: "50 mg daily, 4/2 schedule" },
+    { indication: "GIST — post-imatinib", hsa: "y", dose: "50 mg daily, 4/2" },
+    { indication: "Pancreatic NET — advanced", hsa: "y", dose: "37.5 mg continuous" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -1966,9 +1969,9 @@ window.DRUGS = [
   mechanism: "Multikinase VEGFR / PDGFR / RAF / KIT inhibitor.",
   dosing: "400 mg PO BID on an empty stomach (reduce to 400 mg daily → 400 mg every other day).",
   indications: [
-    { indication: "Hepatocellular — advanced", hsa: "y", fda: "y", dose: "400 mg BID (SHARP)" },
-    { indication: "Renal cell — advanced", hsa: "y", fda: "y", dose: "400 mg BID" },
-    { indication: "Thyroid — RAI-refractory DTC", hsa: "y", fda: "y", dose: "400 mg BID (DECISION)" }
+    { indication: "Hepatocellular — advanced", hsa: "y", dose: "400 mg BID (SHARP)" },
+    { indication: "Renal cell — advanced", hsa: "y", dose: "400 mg BID" },
+    { indication: "Thyroid — RAI-refractory DTC", hsa: "y", dose: "400 mg BID (DECISION)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2394,8 +2397,8 @@ window.DRUGS = [
   tumours: ["GIST"],
   mechanism: "BCR-ABL / KIT / PDGFR TKI. Solid-tumour use = KIT+ GIST (and DFSP). CML / Ph+ ALL are haematological — out of this module's scope.",
   indications: [
-    { indication: "GIST — KIT+ (advanced)", hsa: "y", fda: "y", dose: "400 mg daily (800 mg if KIT exon 9)" },
-    { indication: "GIST — adjuvant (high-risk, resected)", hsa: "y", fda: "y", dose: "400 mg daily × 3 yr" }
+    { indication: "GIST — KIT+ (advanced)", hsa: "y", dose: "400 mg daily (800 mg if KIT exon 9)" },
+    { indication: "GIST — adjuvant (high-risk, resected)", hsa: "y", dose: "400 mg daily × 3 yr" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2476,8 +2479,8 @@ window.DRUGS = [
   tumours: ["Breast"],
   mechanism: "Non-steroidal aromatase inhibitor — blocks peripheral oestrogen synthesis in postmenopausal women.",
   indications: [
-    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "1 mg PO once daily" },
-    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", fda: "y", dose: "1 mg PO once daily" }
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", dose: "1 mg PO once daily" },
+    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", dose: "1 mg PO once daily" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2505,9 +2508,9 @@ window.DRUGS = [
   tumours: ["Breast"],
   mechanism: "Non-steroidal aromatase inhibitor.",
   indications: [
-    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "2.5 mg PO once daily" },
-    { indication: "Breast — HR+ extended adjuvant", hsa: "y", fda: "y", dose: "2.5 mg PO once daily (after ~5 yr tamoxifen)" },
-    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", fda: "y", dose: "2.5 mg PO once daily (± CDK4/6 inhibitor)" }
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", dose: "2.5 mg PO once daily" },
+    { indication: "Breast — HR+ extended adjuvant", hsa: "y", dose: "2.5 mg PO once daily (after ~5 yr tamoxifen)" },
+    { indication: "Breast — HR+ advanced / metastatic (postmenopausal)", hsa: "y", dose: "2.5 mg PO once daily (± CDK4/6 inhibitor)" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2535,8 +2538,8 @@ window.DRUGS = [
   tumours: ["Breast"],
   mechanism: "Steroidal (irreversible) aromatase inactivator.",
   indications: [
-    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", fda: "y", dose: "25 mg PO once daily after food (switch after 2-3 yr tamoxifen)" },
-    { indication: "Breast — HR+ advanced (post non-steroidal AI)", hsa: "y", fda: "y", dose: "25 mg PO once daily after food" }
+    { indication: "Breast — HR+ adjuvant (postmenopausal)", hsa: "y", dose: "25 mg PO once daily after food (switch after 2-3 yr tamoxifen)" },
+    { indication: "Breast — HR+ advanced (post non-steroidal AI)", hsa: "y", dose: "25 mg PO once daily after food" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2565,9 +2568,9 @@ window.DRUGS = [
   mechanism: "Selective oestrogen-receptor modulator — antagonist in breast, partial agonist in endometrium/bone.",
   boxedWarning: "Serious, sometimes fatal events in risk-reduction / DCIS use — uterine malignancies (endometrial carcinoma + uterine sarcoma), stroke, and pulmonary embolism. Discuss benefit-risk for women at high risk of breast cancer or with DCIS.",
   indications: [
-    { indication: "Breast — HR+ adjuvant (pre- or post-menopausal)", hsa: "y", fda: "y", dose: "20 mg PO once daily" },
-    { indication: "Breast — HR+ advanced / metastatic", hsa: "y", fda: "y", dose: "20 mg PO once daily (up to 40 mg)" },
-    { indication: "Breast — DCIS / risk reduction", hsa: "y", fda: "y", dose: "20 mg PO once daily × 5 yr" }
+    { indication: "Breast — HR+ adjuvant (pre- or post-menopausal)", hsa: "y", dose: "20 mg PO once daily" },
+    { indication: "Breast — HR+ advanced / metastatic", hsa: "y", dose: "20 mg PO once daily (up to 40 mg)" },
+    { indication: "Breast — DCIS / risk reduction", hsa: "y", dose: "20 mg PO once daily × 5 yr" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2622,8 +2625,8 @@ window.DRUGS = [
   tumours: ["Prostate", "Breast"],
   mechanism: "GnRH (LHRH) agonist — chronic stimulation downregulates pituitary GnRH receptors → medical castration. Initial testosterone/oestrogen surge ('flare').",
   indications: [
-    { indication: "Prostate — advanced / metastatic", hsa: "y", fda: "y", dose: "3.6 mg SC every 28 days, or 10.8 mg SC every 12 weeks (cover flare with an antiandrogen)" },
-    { indication: "Breast — pre/peri-menopausal (advanced or adjuvant OFS)", hsa: "y", fda: "y", dose: "3.6 mg SC every 28 days" }
+    { indication: "Prostate — advanced / metastatic", hsa: "y", dose: "3.6 mg SC every 28 days, or 10.8 mg SC every 12 weeks (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre/peri-menopausal (advanced or adjuvant OFS)", hsa: "y", dose: "3.6 mg SC every 28 days" }
   ],
   cdl: { class: "MAF", wording: "For cancer treatment" },
   toxicities: {
@@ -2651,8 +2654,8 @@ window.DRUGS = [
   tumours: ["Prostate", "Breast"],
   mechanism: "GnRH (LHRH) agonist — medical castration after an initial testosterone flare.",
   indications: [
-    { indication: "Prostate — advanced / metastatic", hsa: "y", fda: "y", dose: "Depot 7.5 mg monthly / 22.5 mg q3-monthly / 45 mg q6-monthly (cover flare with an antiandrogen)" },
-    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", fda: "n", dose: "Depot 3.75 mg monthly" }
+    { indication: "Prostate — advanced / metastatic", hsa: "y", dose: "Depot 7.5 mg monthly / 22.5 mg q3-monthly / 45 mg q6-monthly (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", dose: "Depot 3.75 mg monthly" }
   ],
   cdl: { class: "MAF", wording: "For cancer treatment" },
   toxicities: {
@@ -2680,8 +2683,8 @@ window.DRUGS = [
   tumours: ["Prostate", "Breast"],
   mechanism: "GnRH (LHRH) agonist — medical castration after an initial flare.",
   indications: [
-    { indication: "Prostate — locally advanced / metastatic", hsa: "y", fda: "y", dose: "Depot 3.75 mg monthly / 11.25 mg q3-monthly / 22.5 mg q6-monthly (cover flare with an antiandrogen)" },
-    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", fda: "n", dose: "Depot 3.75 mg monthly" }
+    { indication: "Prostate — locally advanced / metastatic", hsa: "y", dose: "Depot 3.75 mg monthly / 11.25 mg q3-monthly / 22.5 mg q6-monthly (cover flare with an antiandrogen)" },
+    { indication: "Breast — pre-menopausal (ovarian suppression)", hsa: "y", dose: "Depot 3.75 mg monthly" }
   ],
   cdl: { class: "MAF", wording: "For cancer treatment" },
   toxicities: {
@@ -2737,8 +2740,8 @@ window.DRUGS = [
   tumours: ["Prostate"],
   mechanism: "First-generation non-steroidal androgen-receptor antagonist.",
   indications: [
-    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", fda: "y", dose: "50 mg PO once daily (combined androgen blockade)" },
-    { indication: "Prostate — flare prophylaxis at LHRH-agonist start", hsa: "y", fda: "y", dose: "50 mg PO once daily, started before / with the agonist" }
+    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", dose: "50 mg PO once daily (combined androgen blockade)" },
+    { indication: "Prostate — flare prophylaxis at LHRH-agonist start", hsa: "y", dose: "50 mg PO once daily, started before / with the agonist" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2766,7 +2769,7 @@ window.DRUGS = [
   mechanism: "First-generation non-steroidal androgen-receptor antagonist.",
   boxedWarning: "Hepatic injury — hospitalisation and deaths from hepatic failure reported. Measure serum transaminases before starting, monthly for the first 4 months, then periodically; stop immediately for jaundice or ALT > 2× upper limit of normal.",
   indications: [
-    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", fda: "y", dose: "250 mg PO three times daily" }
+    { indication: "Prostate — advanced (with LHRH agonist)", hsa: "y", dose: "250 mg PO three times daily" }
   ],
   cdl: { items: [
     { cancer: "Prostate — advanced", status: "MSV/MSHL", text: "with an LHRH agonist for previously untreated advanced prostate cancer" }
@@ -2795,8 +2798,8 @@ window.DRUGS = [
   tumours: ["Prostate"],
   mechanism: "Steroidal androgen-receptor antagonist with progestogenic / central anti-gonadotrophic activity. (Not FDA-approved; HSA-registered.)",
   indications: [
-    { indication: "Prostate — advanced", hsa: "y", fda: "n", dose: "100 mg PO 2-3 times daily" },
-    { indication: "Prostate — LHRH-agonist flare cover", hsa: "y", fda: "n", dose: "100 mg PO 2-3 times daily around agonist initiation" }
+    { indication: "Prostate — advanced", hsa: "y", dose: "100 mg PO 2-3 times daily" },
+    { indication: "Prostate — LHRH-agonist flare cover", hsa: "y", dose: "100 mg PO 2-3 times daily around agonist initiation" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2824,8 +2827,8 @@ window.DRUGS = [
   tumours: ["Prostate"],
   mechanism: "CYP17 (17α-hydroxylase / C17,20-lyase) inhibitor — blocks androgen synthesis in testes, adrenals and tumour. Given with prednisolone to offset mineralocorticoid excess.",
   indications: [
-    { indication: "Prostate — metastatic castration-resistant (mCRPC)", hsa: "y", fda: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg twice daily; with ADT" },
-    { indication: "Prostate — metastatic hormone-sensitive (mHSPC, high-risk)", hsa: "y", fda: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg once daily; with ADT" }
+    { indication: "Prostate — metastatic castration-resistant (mCRPC)", hsa: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg twice daily; with ADT" },
+    { indication: "Prostate — metastatic hormone-sensitive (mHSPC, high-risk)", hsa: "y", dose: "1000 mg PO once daily (fasting) + prednisolone 5 mg once daily; with ADT" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
@@ -2943,10 +2946,10 @@ window.DRUGS = [
   tumours: ["Supportive care"],
   mechanism: "Fully human monoclonal antibody against RANKL — inhibits osteoclast formation and bone resorption. Xgeva = oncology (120 mg); Prolia = bone loss / osteoporosis (60 mg).",
   indications: [
-    { indication: "Bone metastases — prevention of skeletal-related events (solid tumours)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks (+ calcium/vitamin D)" },
-    { indication: "Giant cell tumour of bone (unresectable)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15 of cycle 1" },
-    { indication: "Hypercalcaemia of malignancy (bisphosphonate-refractory)", hsa: "y", fda: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15" },
-    { indication: "Cancer treatment-induced bone loss (AI / ADT)", hsa: "y", fda: "y", dose: "Prolia 60 mg SC every 6 months (+ calcium/vitamin D)" }
+    { indication: "Bone metastases — prevention of skeletal-related events (solid tumours)", hsa: "y", dose: "Xgeva 120 mg SC every 4 weeks (+ calcium/vitamin D)" },
+    { indication: "Giant cell tumour of bone (unresectable)", hsa: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15 of cycle 1" },
+    { indication: "Hypercalcaemia of malignancy (bisphosphonate-refractory)", hsa: "y", dose: "Xgeva 120 mg SC every 4 weeks, with loading doses days 8 & 15" },
+    { indication: "Cancer treatment-induced bone loss (AI / ADT)", hsa: "y", dose: "Prolia 60 mg SC every 6 months (+ calcium/vitamin D)" }
   ],
   cdl: { items: [
     { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
@@ -2977,8 +2980,8 @@ window.DRUGS = [
   tumours: ["Supportive care"],
   mechanism: "Nitrogen-containing bisphosphonate — inhibits osteoclast-mediated bone resorption (farnesyl pyrophosphate synthase). Zometa = oncology; Aclasta = osteoporosis.",
   indications: [
-    { indication: "Bone metastases — prevention of skeletal-related events", hsa: "y", fda: "y", dose: "Zometa 4 mg IV over ≥15 min every 3-4 weeks (+ calcium/vitamin D)" },
-    { indication: "Hypercalcaemia of malignancy", hsa: "y", fda: "y", dose: "Zometa 4 mg IV single dose (may repeat after ≥7 days if needed)" }
+    { indication: "Bone metastases — prevention of skeletal-related events", hsa: "y", dose: "Zometa 4 mg IV over ≥15 min every 3-4 weeks (+ calcium/vitamin D)" },
+    { indication: "Hypercalcaemia of malignancy", hsa: "y", dose: "Zometa 4 mg IV single dose (may repeat after ≥7 days if needed)" }
   ],
   cdl: { items: [
     { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
@@ -3009,8 +3012,8 @@ window.DRUGS = [
   tumours: ["Supportive care"],
   mechanism: "Nitrogen-containing bisphosphonate — inhibits osteoclastic bone resorption. Largely superseded by zoledronic acid (longer infusion, less potent) but still used.",
   indications: [
-    { indication: "Osteolytic bone metastases (breast) / myeloma bone disease", hsa: "y", fda: "y", dose: "90 mg IV over 2-4 h every 3-4 weeks" },
-    { indication: "Hypercalcaemia of malignancy", hsa: "y", fda: "y", dose: "60-90 mg IV over 2-24 h, single dose (by calcium level)" }
+    { indication: "Osteolytic bone metastases (breast) / myeloma bone disease", hsa: "y", dose: "90 mg IV over 2-4 h every 3-4 weeks" },
+    { indication: "Hypercalcaemia of malignancy", hsa: "y", dose: "60-90 mg IV over 2-24 h, single dose (by calcium level)" }
   ],
   cdl: { items: [
     { cancer: "Supportive — bone-targeted", status: "Not listed", text: "not on the MOH Cancer Drug List (supportive bone agent, not a CDL antineoplastic); HSA-registered" }
@@ -3040,9 +3043,9 @@ window.DRUGS = [
   tumours: ["Neuroendocrine"],
   mechanism: "Synthetic somatostatin analogue — binds somatostatin receptors (mainly SSTR2/5), suppressing hormone secretion and giving an antiproliferative effect in well-differentiated NET.",
   indications: [
-    { indication: "Carcinoid syndrome / functioning NET — symptom control", hsa: "y", fda: "y", dose: "Immediate-release 50-100 mcg SC 2-3×/day, titrate; then LAR 20-30 mg IM every 4 weeks" },
-    { indication: "Advanced midgut NET — antiproliferative", hsa: "y", fda: "y", dose: "LAR 30 mg IM every 4 weeks (PROMID)" },
-    { indication: "VIPoma / glucagonoma — symptom control", hsa: "y", fda: "y", dose: "50-100 mcg SC 2-3×/day, then LAR depot" }
+    { indication: "Carcinoid syndrome / functioning NET — symptom control", hsa: "y", dose: "Immediate-release 50-100 mcg SC 2-3×/day, titrate; then LAR 20-30 mg IM every 4 weeks" },
+    { indication: "Advanced midgut NET — antiproliferative", hsa: "y", dose: "LAR 30 mg IM every 4 weeks (PROMID)" },
+    { indication: "VIPoma / glucagonoma — symptom control", hsa: "y", dose: "50-100 mcg SC 2-3×/day, then LAR depot" }
   ],
   cdl: { class: "SDL", wording: "For cancer treatment" },
   toxicities: {
