@@ -3961,6 +3961,343 @@ window.DRUGS = [
   ] },
   sources: "MOH Cancer Drug List (1 Jun 2026, SDL) · NDF / HSA register (Levact) · FDA label (DailyMed). StiL NHL1, BRIGHT",
   verified: "2026-07-01"
+},
+
+{
+  id: "vemurafenib",
+  name: "Vemurafenib",
+  aliases: ["Zelboraf"],
+  class: "BRAF inhibitor",
+  subclass: "BRAF V600 kinase inhibitor",
+  route: ["PO"],
+  atc: "L01EC01",
+  brands: ["Zelboraf"],
+  tumours: ["Melanoma"],
+  mechanism: "Inhibits mutant BRAF V600 kinase; paired with cobimetinib (MEK) to delay resistance.",
+  dosing: "960 mg PO twice daily (often + cobimetinib).",
+  cdl: { items: [
+    { cancer: "Melanoma — BRAF V600 advanced", status: "Not listed", text: "unresectable/metastatic, BRAF V600 mutation (BRIM-3, coBRIM); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Arthralgia", "Rash / photosensitivity", "Fatigue", "Alopecia", "Nausea", "Cutaneous squamous-cell carcinoma / keratoacanthoma"],
+    serious: ["Secondary cutaneous (and rarely non-cutaneous) malignancies", "QTc prolongation", "Severe dermatologic reactions (SJS/TEN, DRESS)", "Hepatotoxicity", "Uveitis"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Skin surveillance", text: "dermatologic exam at baseline + periodically (cuSCC); photoprotection; excise lesions and continue." },
+    { label: "Cardiac / hepatic", text: "monitor ECG/electrolytes + LFTs; withhold/reduce (720 → 480 mg BID) for grade ≥3 toxicity." }
+  ] },
+  sources: "NDF / HSA register (Zelboraf) · not on MOH Cancer Drug List · FDA label (DailyMed). BRIM-3, coBRIM",
+  verified: "2026-07-01"
+},
+
+{
+  id: "cobimetinib",
+  name: "Cobimetinib",
+  aliases: ["Cotellic"],
+  class: "MEK inhibitor",
+  subclass: "MEK1/2 inhibitor",
+  route: ["PO"],
+  atc: "L01EE02",
+  brands: ["Cotellic"],
+  tumours: ["Melanoma"],
+  mechanism: "MEK1/2 inhibitor; given with vemurafenib in BRAF V600 melanoma.",
+  dosing: "60 mg PO once daily, days 1-21 of a 28-day cycle, + vemurafenib.",
+  cdl: { items: [
+    { cancer: "Melanoma — BRAF V600 advanced (+ vemurafenib)", status: "Not listed", text: "unresectable/metastatic BRAF V600 (coBRIM); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Rash / photosensitivity", "Nausea", "Fatigue", "Raised CK", "Fever"],
+    serious: ["Cardiomyopathy / LVEF decline", "Serous retinopathy / retinal detachment", "Rhabdomyolysis (raised CK)", "Hepatotoxicity", "Severe photosensitivity / dermatologic reactions"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Cardiac / ocular", text: "baseline + periodic LVEF and eye assessment; withhold for symptomatic LVEF drop or serous retinopathy." },
+    { label: "Muscle", text: "check CK for myalgia; withhold/reduce (60 → 40 → 20 mg) for rhabdomyolysis or grade ≥3 toxicity." }
+  ] },
+  sources: "NDF / HSA register (Cotellic) · not on MOH Cancer Drug List · FDA label (DailyMed). coBRIM",
+  verified: "2026-07-01"
+},
+
+{
+  id: "binimetinib",
+  name: "Binimetinib",
+  aliases: ["Mektovi"],
+  class: "MEK inhibitor",
+  subclass: "MEK1/2 inhibitor",
+  route: ["PO"],
+  atc: "L01EE03",
+  brands: ["Mektovi"],
+  tumours: ["Melanoma"],
+  mechanism: "MEK1/2 inhibitor; paired with encorafenib in BRAF V600 melanoma.",
+  dosing: "45 mg PO twice daily, + encorafenib.",
+  cdl: { items: [
+    { cancer: "Melanoma — BRAF V600 advanced (+ encorafenib)", status: "Not listed", text: "unresectable/metastatic BRAF V600 (COLUMBUS); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Raised CK", "Diarrhoea", "Nausea / vomiting", "Fatigue", "Rash", "Peripheral oedema"],
+    serious: ["Cardiomyopathy / LVEF decline", "Serous retinopathy / retinal detachment", "Rhabdomyolysis", "Interstitial lung disease", "Hepatotoxicity", "Venous thromboembolism"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Cardiac / ocular", text: "baseline + periodic LVEF and ophthalmic exams; withhold for symptomatic LVEF drop or retinopathy." },
+    { label: "Muscle / hepatic", text: "monitor CK + LFTs; withhold/reduce (45 → 30 mg BID) for grade ≥3 toxicity." }
+  ] },
+  sources: "NDF / HSA register (Mektovi) · not on MOH Cancer Drug List · FDA label (DailyMed). COLUMBUS",
+  verified: "2026-07-01"
+},
+
+{
+  id: "capmatinib",
+  name: "Capmatinib",
+  aliases: ["Tabrecta"],
+  class: "MET inhibitor",
+  subclass: "MET kinase inhibitor",
+  route: ["PO"],
+  atc: "L01EX17",
+  brands: ["Tabrecta"],
+  tumours: ["Lung"],
+  mechanism: "Selective MET inhibitor for MET exon 14 skipping NSCLC.",
+  dosing: "400 mg PO twice daily.",
+  cdl: { items: [
+    { cancer: "Non-small cell lung — MET exon 14 skipping", status: "Not listed", text: "advanced NSCLC with MET exon 14 skipping (GEOMETRY mono-1); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Peripheral oedema", "Nausea / vomiting", "Raised creatinine", "Fatigue", "Decreased appetite", "Photosensitivity"],
+    serious: ["Interstitial lung disease / pneumonitis", "Hepatotoxicity", "Photosensitivity reactions"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "ILD / hepatic", text: "withhold for suspected ILD (discontinue if confirmed); monitor LFTs, withhold/reduce (400 → 300 → 200 mg BID) for grade ≥3." }
+  ] },
+  sources: "NDF / HSA register (Tabrecta) · not on MOH Cancer Drug List · FDA label (DailyMed). GEOMETRY mono-1",
+  verified: "2026-07-01"
+},
+
+{
+  id: "selpercatinib",
+  name: "Selpercatinib",
+  aliases: ["Retevmo", "Retsevmo"],
+  class: "RET inhibitor",
+  subclass: "selective RET kinase inhibitor",
+  route: ["PO"],
+  atc: "L01EX22",
+  brands: ["Retsevmo"],
+  tumours: ["Lung", "Thyroid"],
+  mechanism: "Selective RET inhibitor for RET fusion-positive and RET-mutant cancers.",
+  dosing: "160 mg PO twice daily (120 mg if <50 kg).",
+  cdl: { items: [
+    { cancer: "Lung / thyroid — RET fusion-positive", status: "Not listed", text: "RET fusion+ NSCLC or thyroid cancer (LIBRETTO-001); HSA-registered, not on the CDL" },
+    { cancer: "Medullary thyroid — RET-mutant", status: "Not listed", text: "advanced RET-mutant medullary thyroid carcinoma" }
+  ] },
+  toxicities: {
+    common: ["Hypertension", "Raised transaminases", "Dry mouth", "Diarrhoea / constipation", "Fatigue", "Oedema"],
+    serious: ["Hepatotoxicity", "QTc prolongation", "Hypertension", "Haemorrhage", "Hypersensitivity", "Impaired wound healing"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Monitoring", text: "monitor BP, LFTs, ECG (QTc); withhold/reduce in ~40 mg BID steps for grade ≥3 toxicity; hold before major surgery." }
+  ] },
+  sources: "NDF / HSA register (Retsevmo) · not on MOH Cancer Drug List · FDA label (DailyMed). LIBRETTO-001",
+  verified: "2026-07-01"
+},
+
+{
+  id: "sotorasib",
+  name: "Sotorasib",
+  aliases: ["Lumakras", "Lumykras"],
+  class: "KRAS G12C inhibitor",
+  subclass: "covalent KRAS G12C inhibitor",
+  route: ["PO"],
+  atc: "L01XX73",
+  brands: ["Lumakras"],
+  tumours: ["Lung"],
+  mechanism: "Irreversibly inhibits KRAS G12C, locking it in the inactive state.",
+  dosing: "960 mg PO once daily.",
+  cdl: { items: [
+    { cancer: "Non-small cell lung — KRAS G12C", status: "Not listed", text: "advanced NSCLC with KRAS G12C, after ≥1 prior systemic therapy (CodeBreaK 100/200); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Raised transaminases", "Nausea", "Fatigue", "Musculoskeletal pain", "Cough"],
+    serious: ["Hepatotoxicity", "Interstitial lung disease / pneumonitis"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Hepatic", text: "monitor LFTs before + during; withhold/reduce (960 → 480 → 240 mg) for grade ≥3 transaminitis." },
+    { label: "ILD", text: "withhold for suspected ILD; discontinue if confirmed." }
+  ] },
+  sources: "NDF / HSA register (Lumakras) · not on MOH Cancer Drug List · FDA label (DailyMed). CodeBreaK 100/200",
+  verified: "2026-07-01"
+},
+
+{
+  id: "capivasertib",
+  name: "Capivasertib",
+  aliases: ["Truqap"],
+  class: "AKT inhibitor",
+  subclass: "pan-AKT inhibitor",
+  route: ["PO"],
+  atc: "L01EX30",
+  brands: ["Truqap"],
+  tumours: ["Breast"],
+  mechanism: "Pan-AKT inhibitor for HR+/HER2- breast cancer with PIK3CA / AKT1 / PTEN alterations.",
+  dosing: "400 mg PO twice daily, 4 days on / 3 days off, + fulvestrant.",
+  cdl: { items: [
+    { cancer: "Breast — HR+/HER2- advanced (PIK3CA/AKT1/PTEN-altered)", status: "Not listed", text: "+ fulvestrant, after progression on endocrine therapy (CAPItello-291); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Rash", "Hyperglycaemia", "Nausea", "Fatigue", "Stomatitis"],
+    serious: ["Severe cutaneous reactions (SJS, erythema multiforme, DRESS)", "Severe hyperglycaemia / DKA", "Severe diarrhoea"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Rash", text: "antihistamines / topical steroids; withhold for grade ≥3, resume reduced (400 → 320 → 200 mg BID); discontinue for SJS/DRESS." },
+    { label: "Hyperglycaemia", text: "monitor fasting glucose / HbA1c; treat (metformin); withhold for grade ≥3." }
+  ] },
+  sources: "NDF / HSA register (Truqap) · not on MOH Cancer Drug List · FDA label (DailyMed). CAPItello-291",
+  verified: "2026-07-01"
+},
+
+{
+  id: "futibatinib",
+  name: "Futibatinib",
+  aliases: ["Lytgobi"],
+  class: "FGFR inhibitor",
+  subclass: "irreversible FGFR1-4 inhibitor",
+  route: ["PO"],
+  atc: "L01EN04",
+  brands: ["Lytgobi"],
+  tumours: ["Biliary tract"],
+  mechanism: "Irreversible FGFR1-4 inhibitor for FGFR2-fusion cholangiocarcinoma.",
+  dosing: "20 mg PO once daily.",
+  cdl: { items: [
+    { cancer: "Cholangiocarcinoma — FGFR2 fusion", status: "Not listed", text: "LA/metastatic, after ≥1 prior systemic therapy (FOENIX-CCA2); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Hyperphosphataemia (on-target)", "Nail changes", "Dry mouth / skin", "Alopecia", "Diarrhoea", "Fatigue"],
+    serious: ["Retinal pigment epithelial detachment / central serous retinopathy", "Severe hyperphosphataemia / soft-tissue mineralisation"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Hyperphosphataemia", text: "low-phosphate diet + phosphate-binders; withhold/reduce (20 → 16 → 12 mg) for persistent elevation." },
+    { label: "Ocular", text: "baseline + periodic eye exams; withhold for retinopathy." }
+  ] },
+  sources: "NDF / HSA register (Lytgobi) · not on MOH Cancer Drug List · FDA label (DailyMed). FOENIX-CCA2",
+  verified: "2026-07-01"
+},
+
+{
+  id: "nintedanib",
+  name: "Nintedanib",
+  aliases: ["Vargatef"],
+  class: "Angiokinase inhibitor",
+  subclass: "VEGFR / FGFR / PDGFR inhibitor",
+  route: ["PO"],
+  atc: "L01EX09",
+  brands: ["Vargatef"],
+  tumours: ["Lung"],
+  mechanism: "Triple angiokinase inhibitor (VEGFR1-3, FGFR1-3, PDGFR); oncology use is NSCLC adenocarcinoma. (Also marketed as Ofev for pulmonary fibrosis.)",
+  dosing: "200 mg PO twice daily on days 2-21, + docetaxel q21d.",
+  cdl: { items: [
+    { cancer: "Non-small cell lung — adenocarcinoma (2L, + docetaxel)", status: "Not listed", text: "locally advanced/metastatic adenocarcinoma after 1L chemotherapy (LUME-Lung 1); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Nausea / vomiting", "Raised transaminases", "Decreased appetite", "Fatigue", "Abdominal pain"],
+    serious: ["Hepatotoxicity", "Gastrointestinal perforation", "Bleeding", "Venous / arterial thromboembolism"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "GI / hepatic", text: "antidiarrhoeals; monitor LFTs; withhold/reduce (200 → 150 → 100 mg BID) for grade ≥3 diarrhoea or transaminitis." },
+    { label: "Bleeding / perforation", text: "caution with anticoagulation; discontinue for GI perforation." }
+  ] },
+  sources: "NDF / HSA register (Vargatef) · not on MOH Cancer Drug List · FDA / EU label. LUME-Lung 1",
+  verified: "2026-07-01"
+},
+
+{
+  id: "belzutifan",
+  name: "Belzutifan",
+  aliases: ["Welireg"],
+  class: "HIF-2α inhibitor",
+  subclass: "hypoxia-inducible factor-2α inhibitor",
+  route: ["PO"],
+  atc: "L01XX74",
+  brands: ["Welireg"],
+  tumours: ["Renal"],
+  mechanism: "First-in-class HIF-2α inhibitor; for VHL-associated tumours and advanced clear-cell RCC.",
+  boxedWarning: "Embryo-fetal toxicity — can cause fetal harm; can also render some hormonal contraceptives ineffective. Verify pregnancy status and advise effective non-hormonal contraception.",
+  dosing: "120 mg PO once daily.",
+  cdl: { items: [
+    { cancer: "Renal cell / VHL-associated tumours", status: "Not listed", text: "VHL-associated RCC / CNS haemangioblastoma / pancreatic NET not needing immediate surgery; and advanced ccRCC after PD-1 + VEGF-TKI (LITESPARK-004/005); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Anaemia (prominent, on-target)", "Fatigue", "Hypoxia", "Nausea", "Headache", "Dizziness"],
+    serious: ["Severe anaemia", "Hypoxia (may need oxygen)", "Embryo-fetal toxicity"]
+  },
+  doseModLabel: "Monitoring & dose modification",
+  doseReductions: { other: [
+    { label: "Anaemia / hypoxia", text: "monitor haemoglobin + oxygen saturation before and during; withhold/reduce (120 → 80 → 40 mg) or transfuse per severity; hold for grade ≥2 hypoxia." }
+  ] },
+  sources: "NDF / HSA register (Welireg) · not on MOH Cancer Drug List · FDA label (DailyMed). LITESPARK-004/005",
+  verified: "2026-07-01"
+},
+
+{
+  id: "tucatinib",
+  name: "Tucatinib",
+  aliases: ["Tukysa"],
+  class: "HER2 TKI",
+  subclass: "HER2-selective TKI",
+  route: ["PO"],
+  atc: "L01EH03",
+  brands: ["Tukysa"],
+  tumours: ["Breast", "Colorectal"],
+  mechanism: "Highly HER2-selective TKI with CNS activity; combined with trastuzumab (± capecitabine).",
+  dosing: "300 mg PO twice daily, + trastuzumab (+ capecitabine in breast).",
+  cdl: { items: [
+    { cancer: "Breast — HER2+ advanced (incl. brain metastases)", status: "MSV/MSHL", text: "+ trastuzumab + capecitabine, after ≥1 prior anti-HER2 regimen (HER2CLIMB)" },
+    { cancer: "Colorectal — HER2+ (+ trastuzumab)", status: "MSV/MSHL", text: "RAS wild-type HER2+ metastatic, after prior therapy (MOUNTAINEER)" }
+  ] },
+  toxicities: {
+    common: ["Diarrhoea", "Palmar-plantar erythrodysaesthesia (with capecitabine)", "Nausea", "Fatigue", "Raised transaminases", "Stomatitis"],
+    serious: ["Hepatotoxicity", "Severe diarrhoea"]
+  },
+  doseModLabel: "Dose modification",
+  doseReductions: { other: [
+    { label: "Diarrhoea", text: "antidiarrhoeals; withhold for grade ≥3, resume reduced (300 → 250 → 200 → 150 mg BID)." },
+    { label: "Hepatic", text: "monitor LFTs every 3 weeks; withhold/reduce or discontinue per transaminase / bilirubin rise." }
+  ] },
+  sources: "MOH Cancer Drug List (1 Jun 2026, MSV/MSHL) · NDF / HSA register (Tukysa) · FDA label (DailyMed). HER2CLIMB, MOUNTAINEER",
+  verified: "2026-07-01"
+},
+
+{
+  id: "tarlatamab",
+  name: "Tarlatamab",
+  aliases: ["Imdelltra"],
+  class: "DLL3 bispecific",
+  subclass: "DLL3 × CD3 bispecific T-cell engager",
+  route: ["IV"],
+  atc: "L01FX35",
+  brands: ["Imdelltra"],
+  tumours: ["Lung"],
+  mechanism: "Bispecific T-cell engager (BiTE) binding DLL3 on small-cell lung cancer and CD3 on T cells.",
+  boxedWarning: "Cytokine release syndrome (CRS) and neurologic toxicity including ICANS (immune effector cell-associated neurotoxicity syndrome), which can be serious or life-threatening. Use step-up dosing with monitoring; treat CRS/ICANS promptly.",
+  dosing: "Step-up dosing (1 mg day 1, 10 mg days 8 & 15) then 10 mg IV every 2 weeks, with inpatient monitoring for the first doses.",
+  cdl: { items: [
+    { cancer: "Small-cell lung — post-platinum", status: "Not listed", text: "extensive-stage SCLC with progression on/after platinum chemotherapy (DeLLphi-301); HSA-registered, not on the CDL" }
+  ] },
+  toxicities: {
+    common: ["Cytokine release syndrome", "Fatigue", "Pyrexia", "Dysgeusia", "Decreased appetite", "Anaemia"],
+    serious: ["Cytokine release syndrome (CRS)", "Neurologic toxicity / ICANS", "Serious infections", "Cytopenias"]
+  },
+  doseModLabel: "Monitoring & dose modification",
+  doseReductions: { other: [
+    { label: "CRS / ICANS", text: "step-up dosing with monitoring (inpatient for first doses); hydration + dexamethasone; treat CRS (tocilizumab/steroids) and ICANS (steroids) per grade; withhold/discontinue for severe events." },
+    { label: "Access", text: "administer where CRS/ICANS can be managed; counsel on delayed neurotoxicity." }
+  ] },
+  sources: "NDF / HSA register (Imdelltra) · not on MOH Cancer Drug List · FDA label (DailyMed). DeLLphi-301",
+  verified: "2026-07-01"
 }
 
 ];
